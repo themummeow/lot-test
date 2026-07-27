@@ -218,8 +218,8 @@ function addProduct(){
         <label id="extra-lbl-${pc}"></label>
         <input type="text" class="p-extra" id="extra-input-${pc}" placeholder="">
       </div>
-      <label>อะไหล่พิเศษ (สำหรับพวงกุญแจ) - ชิ้นละ 2 บาท [ไม่บังคับ]</label>
-      <input type="number" class="p-plus" id="plus-${pc}" min="0" placeholder="❗️เฉพาะ สั่งห้อยคู่ไม่ต้องกรอก❗️" oninput="calculateTotal()">
+      <label>หมายเหตุเพิ่มเติม</label>
+      <input type="number" class="p-plus" id="plus-${pc}" min="0" placeholder="❗️กรณีลูกค้าคุยกับทางร้านเพิ่มเติมทางไลน์❗️" oninput="calculateTotal()">
     </div>`;
   container.insertAdjacentHTML('beforeend', itemHtml);
 }
