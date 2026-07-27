@@ -168,10 +168,8 @@ const EXTRA_INFO = {
   }
 };
   
-const EXTRA_INFO = {};
-
-// ⭐ สินค้าคิดราคา "ต่อชิ้น/ต่อใบ" → โชว์ช่องกรอกจำนวนจริงมาคูณ
-const PER_PIECE = [];
+// ⭐ สินค้าคิดราคา "ต่อชิ้น/ต่อใบ" → โชว์ช่องกรอกจำนวนจริงมาคูณ (แก้ชื่อให้ตรง PRICE_DB แล้ว)
+const PER_PIECE = ["ถุง Eco bag 1 Logo","ถุง Eco bag พิมพ์เต็มใบ","เฟรมการ์ด"];
 function isPerPiece(type){ return PER_PIECE.indexOf(type) !== -1; }
 
 let productCount = 0;
@@ -183,7 +181,7 @@ function getPrice(type,size,qty){ if(PRICE_DB[type]&&PRICE_DB[type][size]&&PRICE
 function addProduct(){
   const container = document.getElementById('product-list');
   const items = container.getElementsByClassName('product-item');
-  if(items.length >= 6){ alert('สูงสุด 6 รายการ'); return; }
+  if(items.length >= 3){ alert('สูงสุด 3 รายการ'); return; }
   productCount++;
   const pc = productCount;
   const itemHtml = `
@@ -219,6 +217,8 @@ function addProduct(){
         <label id="extra-lbl-${pc}"></label>
         <input type="text" class="p-extra" id="extra-input-${pc}" placeholder="">
       </div>
+      <label>อะไหล่พิเศษ (สำหรับพวงกุญแจ) - ชิ้นละ 2 บาท [ไม่บังคับ]</label>
+      <input type="number" class="p-plus" id="plus-${pc}" min="0" placeholder="❗️เฉพาะ สั่งห้อยคู่ไม่ต้องกรอก❗️" oninput="calculateTotal()">
     </div>`;
   container.insertAdjacentHTML('beforeend', itemHtml);
 }
@@ -277,9 +277,11 @@ function calculateTotal(){
   let grandTotal = 0;
   document.querySelectorAll('.product-item').forEach(item=>{
     const type=item.querySelector('.p-type').value, size=item.querySelector('.p-size').value, qty=item.querySelector('.p-qty').value;
+    const plus=parseInt(item.querySelector('.p-plus').value)||0;
     const unitEl=item.querySelector('.p-unitqty'), unitQty=parseInt(unitEl?unitEl.value:0)||0;
-    if(type&&size&&qty){ const unitPrice=getPrice(type,size,qty); const price=isPerPiece(type)?unitPrice*unitQty:unitPrice; grandTotal+=price; item.classList.remove('error'); }
+    if(type&&size&&qty){ const unitPrice=getPrice(type,size,qty); const price=isPerPiece(type)?unitPrice*unitQty:unitPrice; grandTotal+=price+(plus*2); item.classList.remove('error'); }
     else if(type||size||qty){ item.classList.add('error'); }
+    else if(plus>0){ grandTotal+=plus*2; item.classList.remove('error'); }
   });
   document.getElementById('total-amount').textContent=grandTotal.toLocaleString('th-TH');
 }
@@ -310,7 +312,7 @@ function sendOrder(){
       itemsValid=false; item.classList.add('error'); extraInp.style.borderColor='#d63384';
     } else if(extraInp){ extraInp.style.borderColor=''; }
   });
-  if(!itemsValid){ alert('กรุณากรอกรายละเอียดให้ครบ รวมถึงจำนวนที่ต้องการ และข้อมูลเพิ่มเติมของสินค้าที่มีเครื่องหมาย ✳️'); return; }
+  if(!itemsValid){ alert('กรุณากรอกรายละเอียดให้ครบ รวมถึงจำนวนที่ต้องการ (สินค้าคิดต่อชิ้น) และข้อมูลสี/เบอร์อะไหล่ของสินค้าที่มีเครื่องหมาย ✳️'); return; }
 
   btn.disabled=true; btn.textContent='กำลังส่ง...';
 
@@ -319,12 +321,14 @@ function sendOrder(){
   data.append('pay_amount',pay_amount); data.append('pay_date',pay_date); data.append('pay_time',pay_time); data.append('count',items.length);
   items.forEach((item,index)=>{
     const type=item.querySelector('.p-type').value, size=item.querySelector('.p-size').value, qty=item.querySelector('.p-qty').value;
+    const plus=parseInt(item.querySelector('.p-plus').value)||0;
     const unitEl=item.querySelector('.p-unitqty'), unitQty=parseInt(unitEl?unitEl.value:0)||0;
     const extraInp=item.querySelector('.p-extra'), extraVal=extraInp?extraInp.value.trim():'';
-    const unitPrice=getPrice(type,size,qty), price=isPerPiece(type)?unitPrice*unitQty:unitPrice;
+    const unitPrice=getPrice(type,size,qty), price=isPerPiece(type)?unitPrice*unitQty:unitPrice, plusPrice=plus*2;
     const qtyText=isPerPiece(type)?(unitQty+' ชิ้น (เรต '+qty+')'):qty;
     data.append(`product_${index}_type`,type); data.append(`product_${index}_size`,size); data.append(`product_${index}_qty`,qtyText);
-    data.append(`product_${index}_price`,price); data.append(`product_${index}_total`,price);
+    data.append(`product_${index}_price`,price); data.append(`product_${index}_plus`,plus); data.append(`product_${index}_plus_price`,plusPrice);
+    data.append(`product_${index}_total`,price+plusPrice);
     if(extraVal) data.append(`product_${index}_extra`,extraVal);
   });
 
@@ -346,5 +350,8 @@ function sendOrder(){
 
 window.addEventListener('DOMContentLoaded', initForm);
 </script>
+</body>
+</html>
+
 </body>
 </html>
