@@ -92,13 +92,18 @@ input:focus, select:focus { outline:none; border-color:#76615b; }
     <div style="text-align:center; margin-bottom:8px;">
       <img src="https://i.ibb.co/LXgSzL8G/pnglogo.png" alt="@the_mum_meow" style="max-width:160px; border-radius:8px;">
     </div>
-    <div style="margin-bottom:8px;"><strong> รอบผลิต Lot. ทดลอง กรุณาอ่านวันปิดรับตามหัวข้อ </strong></div>
+    <div style="margin-bottom:8px;"><strong> งานผลิตโรงงานไทย และบ้านไทย ตัดรอบทุกศุกร์ 31 ก.ค. ส่งศุกร์ 8 ก.ค. </strong></div>
 
     <div class="info-subbox">
       <div style="margin-bottom:8px;"><strong>กรุณาอ่านรายละเอียดก่อนสั่งผลิต:</strong></div>
       <div><a href="https://themummeow.carrd.co/#tos" target="_blank">คลิกอ่านที่นี่</a> หากส่งออเดอร์ = ยอมรับเงื่อนไข</div>
     </div>
 
+    <div class="info-subbox">
+      <div style="margin-bottom:8px;"><strong>เทมเพลตสั่งผลิต art box:</strong></div>
+      <div style="margin-bottom:8px;"><a href="https://themummeow.carrd.co/#artbox" target="_blank">คลิกอ่านที่นี่</a> หากส่งออเดอร์ = ยอมรับเงื่อนไข</div>
+      <div>ไม่รับงานเร่งผลิตทุกกรณี ใช้เวลาผลิตตามลำดับคิว 5-7 วัน</div>
+    </div>
 
     <div style="border-top:1px solid #f1dbf0; padding-top:10px; font-weight:bold;">📁 กรุณานำไฟล์งานลง Google Drive ก่อนกรอกฟอร์ม</div>
   </div>
@@ -117,9 +122,9 @@ input:focus, select:focus { outline:none; border-color:#76615b; }
     <div>ธนาคารกรุงไทย KTB</div>
     <div>- ชิษณุชา / Chitsanucha</div>
     <div style="font-weight:bold; margin-top:10px;">📌 ทางร้านจะรับคำสั่งซื้อต่อเมื่อโอนชำระแล้ว 📌</div>
-    <div style="color:#d63384;">⚠️ เรียกชำระ 2 รอบ (รอบ 2: ค่าชิป+ค่าส่ง)</div>
+    <div style="color:#d63384;">⚠️ เรียกชำระ 2 รอบ (รอบ 2 ค่าส่ง EMS)</div>
   </div>
-  <div class="total-display">ยอดชำระค่าผลิต (ไม่รวมชิปปิ้ง): <span id="total-amount">0</span> บาท</div>
+  <div class="total-display">ยอดชำระค่าผลิต (ไม่รวมEMS): <span id="total-amount">0</span> บาท</div>
   <label>ยอดโอน (บาท)</label>
   <input type="number" id="pay_amount" placeholder="เช่น 1000">
   <label>วันที่โอน</label>
@@ -142,12 +147,27 @@ input:focus, select:focus { outline:none; border-color:#76615b; }
 
 <script>
 const PRICE_DB = {
-  "eco bag โรงงานใหม่ ปิดรับไฟล์ 4 ส.ค.": {"57x37cm": { "1 ใบ": 85, "10": 600, "20": 980, "30": 1350, "50": 1950
-  }
-},
-  
-  "eco bag เต็มใบแบบพับได้ โรงงานหลักที่ผลิต eco bag": {
-    "58x45cm": { "1": 165, "10": 1160, "50": 4750 }
+  "Artbox": {"7x10cm + เข็มกลัด 2.5cm": { "10": 300, "20": 490 }
+  },
+  "Sticker UV DTF แบบดวง (ไม่ตัดแบ่ง)": {
+    "3 cm": { "50": 160, "100": 130, "200": 300 },
+    "4 cm": { "50": 180, "100": 260, "200": 350 },
+    "5 cm": { "50": 200, "100": 300, "200": 400 }
+  },
+  "Sticker UV DTF แผ่นตาม size (ไม่ตัดแบ่ง)": {
+    "3x3 นิ้ว": { "20": 250, "50": 540, "100": 950 },
+    "A7": { "20": 280, "50": 680, "100": 1200 },
+    "A6": { "20": 400, "50": 950, "100": 1800 }
+  },
+  "รอบทดลอง Sticker UV DTF แบบบริการตัดแบ่งเป็นดวง (ขนาด cm)": {
+    "3x3 cm": { "50": 263, "100": 352, "200": 541 },
+    "4x4 cm": { "50": 316, "100": 455, "200": 615 },
+    "5x5 cm": { "50": 364, "100": 565, "200": 978 }
+  },
+  "รอบทดลอง Sticker UV DTF แบบบริการตัดแบ่ง (ขนาดแผ่น)": {
+    "3x3 นิ้ว": { "20": 370, "50": 658, "100": 1163 },
+    "A7": { "20": 436, "50": 819, "100": 1486 },
+    "A6": { "20": 687, "50": 1464, "100": 2777 }
   }
 };
 
@@ -312,7 +332,7 @@ function sendOrder(){
   });
 
   // ── ส่งข้อมูลไป Google Sheet ──
-  fetch('https://script.google.com/macros/s/AKfycbzkVvQj8AdWC0hHL7AWdSNTX41lWoY6IpDz8_Cs2HTK5NMCHkx_RILHqhvosEitvoBK4Q/exec',body:data,keepalive:true})
+  fetch('https://script.google.com/macros/s/AKfycbzbfK3tuoQjA504VSXnbCBt6qCnmlriqOwZtTNn1VHyo6a32edwZ2FOfIKXJYPsZY79MA/exec',{method:'POST',mode:'no-cors',body:data,keepalive:true})
     .catch(err=>console.error('Error:',err))
     .finally(()=>{
       // ── เคลียร์ฟอร์ม ──
