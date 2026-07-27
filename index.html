@@ -169,7 +169,7 @@ const EXTRA_INFO = {
 };
   
 // ⭐ สินค้าคิดราคา "ต่อชิ้น/ต่อใบ" → โชว์ช่องกรอกจำนวนจริงมาคูณ (แก้ชื่อให้ตรง PRICE_DB แล้ว)
-const PER_PIECE = ["ถุง Eco bag 1 Logo","ถุง Eco bag พิมพ์เต็มใบ","เฟรมการ์ด"];
+const PER_PIECE = ["eco bag โรงงานใหม่ ปิดรับไฟล์ 4 ส.ค.","ถุง Eco bag พิมพ์เต็มใบ","เฟรมการ์ด"];
 function isPerPiece(type){ return PER_PIECE.indexOf(type) !== -1; }
 
 let productCount = 0;
@@ -181,7 +181,7 @@ function getPrice(type,size,qty){ if(PRICE_DB[type]&&PRICE_DB[type][size]&&PRICE
 function addProduct(){
   const container = document.getElementById('product-list');
   const items = container.getElementsByClassName('product-item');
-  if(items.length >= 3){ alert('สูงสุด 3 รายการ'); return; }
+  if(items.length >= 3){ alert('สูงสุด 6 รายการ'); return; }
   productCount++;
   const pc = productCount;
   const itemHtml = `
