@@ -92,7 +92,7 @@ input:focus, select:focus { outline:none; border-color:#76615b; }
     <div style="text-align:center; margin-bottom:8px;">
       <img src="https://i.ibb.co/LXgSzL8G/pnglogo.png" alt="@the_mum_meow" style="max-width:160px; border-radius:8px;">
     </div>
-    <div style="margin-bottom:8px;"><strong> Lot.001 ตัดรอบผลิตตามหัวข้อกรุณาอ่านก่อนกดสั่ง </strong></div>
+    <div style="margin-bottom:8px;"><strong> Lot. ทดลอง Carabinner และโปรอะคริลิค 5 ซม ตัดรอบผลิตตามหัวข้อกรุณาอ่านก่อนกดสั่ง </strong></div>
 
     <div class="info-subbox">
       <div style="margin-bottom:8px;"><strong>กรุณาอ่านรายละเอียดก่อนสั่งผลิต:</strong></div>
@@ -124,7 +124,7 @@ input:focus, select:focus { outline:none; border-color:#76615b; }
     <div style="font-weight:bold; margin-top:10px;">📌 ทางร้านจะรับคำสั่งซื้อต่อเมื่อโอนชำระแล้ว 📌</div>
     <div style="color:#d63384;">⚠️ เรียกชำระ 2 รอบ (รอบ 2 ชิปปิ้ง+EMS)</div>
   </div>
-  <div class="total-display">ยอดชำระค่าผลิต (ไม่รวม=ชิปปิ้ง): <span id="total-amount">0</span> บาท</div>
+  <div class="total-display">ยอดชำระค่าผลิต (ไม่รวมชิปปิ้ง): <span id="total-amount">0</span> บาท</div>
   <label>ยอดโอน (บาท)</label>
   <input type="number" id="pay_amount" placeholder="เช่น 1000">
   <label>วันที่โอน</label>
@@ -159,6 +159,14 @@ const PRICE_DB = {
 
     "keychain nfc งานไทย (จัดทำตามลำดับ หากของหมดจะแจ้งทางไลน์เป็นรอบพรีรอ 20-35 วัน) ขอคนรอของได้ไม่รีบใช้": {
     "5.1x4.1cm": { "1": 19, "5": 90, "10": 180 }
+  },
+
+    "พวงกุญแจอะคริลิค (ไม่มีไข่ปลา)": {
+    "5cm": { "50": 150, "100": 280, "200": 500 }
+  },
+  
+    "อะคริลิคไม่เจาะรู": {
+    "5cm": { "50": 150, "100": 280, "200": 500 }
   }
   
 };
