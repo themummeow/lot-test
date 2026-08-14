@@ -159,19 +159,7 @@ const PRICE_DB = {
     "58x45cm": { "1": 175, "10": 1160, "50": 4750 }
   },
 
-    "test Lot.131 keychain nfc งานไทย (จัดทำตามลำดับ หากของหมดจะแจ้งทางไลน์เป็นรอบพรีรอ 20-35 วัน) ขอคนรอของได้ไม่รีบใช้": {
-    "5.1x4.1cm": { "1": 19, "5": 90, "10": 180 }
-  },
-
-    "พวงกุญแจอะคริลิค (ไม่มีไข่ปลา) test Lot.131": {
-    "5cm": { "50 คละลายไม่ได้": 150, "100 คละลายไม่ได้": 280, "200 คละลายไม่ได้": 500 }
-  },
-  
-    "อะคริลิคไม่เจาะรู (test Lot.131)": {
-    "5cm": { "50 คละลายไม่ได้": 150, "100 คละลายไม่ได้": 280, "200 คละลายไม่ได้": 500 }
-  },
-
-    "carabiner หนา 3mm (test Lot.131)": {
+    "carabiner หนา 3mm (test Lot.132)": {
     "7cm": { "10": 180, "30": 480, "50": 750, "100": 1400 }
   }
   
@@ -354,7 +342,7 @@ function sendOrder(){
   });
 
   // ── ส่งข้อมูลไป Google Sheet ──
-  fetch('https://script.google.com/macros/s/AKfycbwQPwVLyjmraxZAfxm7I1k8YvI8sPkZwG1xRBnN8mBAbNShB_6_5frqfF4-v6gpGw2eiQ/exec',{method:'POST',mode:'no-cors',body:data,keepalive:true})
+  fetch('https://script.google.com/macros/s/AKfycby1cMYAqh-nbNdKLRDBhovyf39Bjv_n1sj40XlZa7UT7JIua3e3Z1mYufYR7qkN-h2IKw/exec',{method:'POST',mode:'no-cors',body:data,keepalive:true})
     .catch(err=>console.error('Error:',err))
     .finally(()=>{
       // ── เคลียร์ฟอร์ม ──
