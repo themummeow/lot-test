@@ -92,10 +92,10 @@ input:focus, select:focus { outline:none; border-color:#76615b; }
     <div style="text-align:center; margin-bottom:8px;">
       <img src="https://i.ibb.co/LXgSzL8G/pnglogo.png" alt="@the_mum_meow" style="max-width:160px; border-radius:8px;">
     </div>
-    <div style="margin-bottom:8px;"><strong> Lot.133 ทดลอง Carabinner + โปรลดราคา 5ซม (พวงกุญแจ/อะคริลิตเปล่า) ตัดรอบผลิตตามหัวข้อกรุณาอ่านก่อนกดสั่ง </strong></div>
+    <div style="margin-bottom:8px;"><strong> Lot.BTS26 รับเฉพาะพวงกุญแจ 3 cm หรือ 5 cm 100-200 ชิ้น และ Card holder 100 ชิ้นต่อแบบ </strong></div>
 
     <div class="info-subbox">
-      <div style="margin-bottom:8px;"><strong>กรุณาอ่านรายละเอียดก่อนสั่งผลิต: ของถึงไทย 11 ต.ค.</strong></div>
+      <div style="margin-bottom:8px;"><strong>กรุณาอ่านรายละเอียดก่อนสั่งผลิต: ของถึงไทย 20 พ.ย.</strong></div>
       <div><a href="https://themummeow.carrd.co/#tos" target="_blank">คลิกอ่านที่นี่</a> หากส่งออเดอร์ = ยอมรับเงื่อนไข</div>
     </div>
 
@@ -151,21 +151,20 @@ input:focus, select:focus { outline:none; border-color:#76615b; }
 
 <script>
 const PRICE_DB = {
-  "eco bag โรงงานใหม่ ปิดรับไฟล์ 14 ส.ค.": {"57x37cm": { "1 ใบ": 85, "10": 600, "20": 980, "30": 1350, "50": 1950
-  }
+
+  "พวงกุญแจ รวมแพคแยกซอง ": { "3cm": { "100 ชิ้น ❌คละลายไม่ได้": 320, "200 ชิ้น ❌คละลายไม่ได้": 600}, "5cm":{ "100 ชิ้น ❌คละลายไม่ได้": 480, "200 ชิ้น ❌คละลายไม่ได้": 900}
+
 },
-  
-  "eco bag เต็มใบแบบพับได้ โรงงานหลักที่ผลิต eco bag": {
-    "58x45cm": { "1": 175, "10": 1160, "50": 4750 }
-  },
 
+  "สแตนดี้ รวมแพคแยกซอง ":  { "3cm": { "100 ชิ้น ❌คละลายไม่ได้": 320, "200 ชิ้น ❌คละลายไม่ได้": 600}, "5cm":{ "100 ชิ้น ❌คละลายไม่ได้": 480, "200 ชิ้น ❌คละลายไม่ได้": 900}
 
-    "carabiner หนา 3mm (test Lot.132)": {
-    "7cm": { "10": 180, "30": 480, "50": 750, "100": 1400 }
+},
+
+  "card holder": {
+    "6.8x11cm": { "100 ชิ้น ❌คละลายไม่ได้": 890 }
   }
-  
 };
-  
+
 const EXTRA_INFO = {
 
   "eco bag โรงงานใหม่ ปิดรับไฟล์ 4 ส.ค.": {
@@ -177,7 +176,7 @@ const EXTRA_INFO = {
     required:    true
   }
 };
-  
+
 // ⭐ สินค้าคิดราคา "ต่อชิ้น/ต่อใบ" → โชว์ช่องกรอกจำนวนจริงมาคูณ (แก้ชื่อให้ตรง PRICE_DB แล้ว)
 const PER_PIECE = ["eco bag โรงงานใหม่ ปิดรับไฟล์ 4 ส.ค.","ถุง Eco bag พิมพ์เต็มใบ","เฟรมการ์ด"];
 function isPerPiece(type){ return PER_PIECE.indexOf(type) !== -1; }
@@ -191,7 +190,7 @@ function getPrice(type,size,qty){ if(PRICE_DB[type]&&PRICE_DB[type][size]&&PRICE
 function addProduct(){
   const container = document.getElementById('product-list');
   const items = container.getElementsByClassName('product-item');
-  if(items.length >= 3){ alert('สูงสุด 6 รายการ'); return; }
+  if(items.length >= 6){ alert('สูงสุด 6 รายการ'); return; }
   productCount++;
   const pc = productCount;
   const itemHtml = `
@@ -343,7 +342,7 @@ function sendOrder(){
   });
 
   // ── ส่งข้อมูลไป Google Sheet ──
-  fetch('https://script.google.com/macros/s/AKfycby1cMYAqh-nbNdKLRDBhovyf39Bjv_n1sj40XlZa7UT7JIua3e3Z1mYufYR7qkN-h2IKw/exec',{method:'POST',mode:'no-cors',body:data,keepalive:true})
+  fetch('https://script.google.com/macros/s/AKfycbzHY4r6_hZu-E5w9yR8QMVQ_2ShuAcAlk5uRsENZKCvd7x8c86INxchIed1YooUJmTGsA/exec',{method:'POST',mode:'no-cors',body:data,keepalive:true})
     .catch(err=>console.error('Error:',err))
     .finally(()=>{
       // ── เคลียร์ฟอร์ม ──
