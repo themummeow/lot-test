@@ -54,8 +54,8 @@ input:focus, select:focus { outline:none; border-color:#76615b; }
 .step-title { font-size:1.05rem; font-weight:700; color:#76615b; margin:6px 0 12px; }
 .step-progress { margin-bottom:15px; }
 .step-label { font-size:0.85rem; color:#76615b; font-weight:600; margin-bottom:6px; }
-.step-bar { height:8px; background:#f1dbf0; border-radius:8px; overflow:hidden; }
-.step-bar-fill { height:100%; background:#76615b; width:0; transition:width 0.3s; }
+.step-bar { height:8px; background:#e5dcd9; border-radius:8px; overflow:hidden; }
+.step-bar-fill { height:100%; background:#76615b; width:0; border-radius:8px; transition:width 0.3s; }
 .step-nav { display:flex; gap:10px; margin-top:10px; }
 .step-nav button { flex:1; padding:14px; border-radius:25px; border:none; font-weight:600; cursor:pointer; font-size:1rem; }
 .btn-back { background:#f1dbf0; color:#76615b; }
@@ -312,6 +312,7 @@ const PRICE_DB_ALL = {
 
 // ================================================================
 // การแบ่งหน้า: ?type=acrylic | bag | card | d
+// ไม่มี ?type= จะเปิดกลุ่ม A ให้อัตโนมัติ
 // ชื่อกลุ่มเก็บไว้ในโค้ดเท่านั้น ไม่แสดงให้ลูกค้าเห็น
 // เปิดมาจะเลือกรายการแรกของกลุ่มให้อัตโนมัติ
 // ================================================================
