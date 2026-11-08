@@ -49,6 +49,19 @@ input:focus, select:focus { outline:none; border-color:#76615b; }
 .success-line-btn:hover { background:#05a648; }
 .success-close-btn { display:block; background:#f1dbf0; color:#76615b; border:none; padding:12px; border-radius:25px; font-weight:600; width:100%; cursor:pointer; font-size:0.95rem; }
 .success-close-btn:hover { background:#e8c8e6; }
+/* ── STEP (ทีละขั้นตอน) ── */
+.step { display:none; }
+.step-title { font-size:1.05rem; font-weight:700; color:#76615b; margin:6px 0 12px; }
+.step-progress { margin-bottom:15px; }
+.step-label { font-size:0.85rem; color:#76615b; font-weight:600; margin-bottom:6px; }
+.step-bar { height:8px; background:#f1dbf0; border-radius:8px; overflow:hidden; }
+.step-bar-fill { height:100%; background:#d63384; width:0; transition:width 0.3s; }
+.step-nav { display:flex; gap:10px; margin-top:10px; }
+.step-nav button { flex:1; padding:14px; border-radius:25px; border:none; font-weight:600; cursor:pointer; font-size:1rem; }
+.btn-back { background:#f1dbf0; color:#76615b; }
+.btn-back:hover { background:#e8c8e6; }
+.btn-next { background:#76615b; color:#fff; }
+.btn-next:hover { background:#5c4e47; }
 </style>
 </head>
 <body>
@@ -75,51 +88,86 @@ input:focus, select:focus { outline:none; border-color:#76615b; }
     <div style="margin-bottom:8px;">🚨 ปิดรับรอบศุกร์ที่ 13 พ.ย. 69 เวลา 22.00 น.</div>
     <div style="border-top:1px solid #f1dbf0; padding-top:10px; font-weight:bold;">📁 กรุณานำไฟล์งานลง Google Drive ก่อนกรอกฟอร์ม</div>
   </div>
-  <label>บัญชี X / Twitter</label>
-  <input type="text" id="twitter" placeholder="@username">
-  <label>ชื่อไลน์ที่แสดง (❌ไม่ใช่ ID)</label>
-  <input type="text" id="line" placeholder="เช่น KitKat🌸🦊6423🧿🪬">
-  <label>ลิงก์ Google Drive (ไฟล์งาน)</label>
-  <input type="text" id="drive_link" placeholder="https://drive.google.com/...">
-  <div id="product-list"></div>
-  <button type="button" class="btn-add" onclick="addProduct()"> เพิ่มรายการสินค้า (สั่งเพิ่มได้สูงสุด 10 รายการ)</button>
-  <div class="payment-info">
-    <div style="font-weight:bold; margin-bottom:5px;">จ่ายรอบแรก เฉพาะค่าผลิตสินค้า</div>
-    <div>❌ ยังไม่ต้องชำระค่าจัดส่ง</div>
-    <div style="font-weight:bold; font-size:1.15rem; margin:10px 0;">🏦 251-2-13308-2</div>
-    <div>ธนาคารไทยพาณิช (SCB)</div>
-    <div>- ชิษณุชา / Chitsanucha</div>
 
-    <div style="font-weight:bold; font-size:1.15rem; margin:10px 0;">🏦 หรือชำระด้วย True Money</div>
+  <div class="step-progress">
+    <div class="step-label" id="step-label"></div>
+    <div class="step-bar"><div class="step-bar-fill" id="step-fill"></div></div>
+  </div>
 
-    <div style="margin:20px 0; text-align:center;">
-      <a href="https://i.ibb.co/vC48ZJJf/Receive-Money-QR-2026-10-30-23-49-29.png" target="_blank" rel="noopener" style="display:block; text-decoration:none;">
-        <img src="https://i.ibb.co/vC48ZJJf/Receive-Money-QR-2026-10-30-23-49-29.png" alt="ภาพประกอบ" loading="lazy" style="width:100%; max-width:460px; border-radius:12px; border:1px solid #f1dbf0; display:block; margin:0 auto;">
-      </a>
-      <div style="font-size:0.73rem; color:#aaa; margin-top:6px;">คลิกที่ภาพเพื่อดูขนาดเต็ม</div>
+  <!-- ขั้นที่ 1: ข้อมูลผู้สั่ง -->
+  <div class="step" data-step="1">
+    <div class="step-title">ขั้นที่ 1: ข้อมูลผู้สั่ง</div>
+    <label>บัญชี X / Twitter</label>
+    <input type="text" id="twitter" placeholder="@username">
+    <label>ชื่อไลน์ที่แสดง (❌ไม่ใช่ ID)</label>
+    <input type="text" id="line" placeholder="เช่น KitKat🌸🦊6423🧿🪬">
+    <label>ลิงก์ Google Drive (ไฟล์งาน)</label>
+    <input type="text" id="drive_link" placeholder="https://drive.google.com/...">
+  </div>
+
+  <!-- ขั้นที่ 2: เลือกสินค้า -->
+  <div class="step" data-step="2">
+    <div class="step-title">ขั้นที่ 2: เลือกสินค้า</div>
+    <div id="product-list"></div>
+    <button type="button" class="btn-add" onclick="addProduct()"> เพิ่มรายการสินค้า (สั่งเพิ่มได้สูงสุด 10 รายการ)</button>
+  </div>
+
+  <!-- ขั้นที่ 3: ยอดชำระ -->
+  <div class="step" data-step="3">
+    <div class="step-title">ขั้นที่ 3: ยอดชำระ</div>
+    <div class="total-display">ยอดชำระค่าผลิต (ไม่รวมชิปปิ้ง): <span id="total-amount">0</span> บาท</div>
+    <div class="payment-info">
+      <div style="font-weight:bold; margin-bottom:5px;">จ่ายรอบแรก เฉพาะค่าผลิตสินค้า</div>
+      <div>❌ ยังไม่ต้องชำระค่าจัดส่ง</div>
+      <div style="font-weight:bold; font-size:1.15rem; margin:10px 0;">🏦 251-2-13308-2</div>
+      <div>ธนาคารไทยพาณิช (SCB)</div>
+      <div>- ชิษณุชา / Chitsanucha</div>
+
+      <div style="font-weight:bold; font-size:1.15rem; margin:10px 0;">🏦 หรือชำระด้วย True Money</div>
+
+      <div style="margin:20px 0; text-align:center;">
+        <a href="https://i.ibb.co/vC48ZJJf/Receive-Money-QR-2026-10-30-23-49-29.png" target="_blank" rel="noopener" style="display:block; text-decoration:none;">
+          <img src="https://i.ibb.co/vC48ZJJf/Receive-Money-QR-2026-10-30-23-49-29.png" alt="ภาพประกอบ" loading="lazy" style="width:100%; max-width:460px; border-radius:12px; border:1px solid #f1dbf0; display:block; margin:0 auto;">
+        </a>
+        <div style="font-size:0.73rem; color:#aaa; margin-top:6px;">คลิกที่ภาพเพื่อดูขนาดเต็ม</div>
+      </div>
+      <div style="font-weight:bold; margin-top:10px;">📌 ทางร้านจะรับคำสั่งซื้อต่อเมื่อโอนชำระแล้ว 📌</div>
+      <div style="color:#d63384;">⚠️ เรียกชำระ 2 รอบ (รอบ 2: ค่าชิป+ค่าส่ง)</div>
     </div>
-    <div style="font-weight:bold; margin-top:10px;">📌 ทางร้านจะรับคำสั่งซื้อต่อเมื่อโอนชำระแล้ว 📌</div>
-    <div style="color:#d63384;">⚠️ เรียกชำระ 2 รอบ (รอบ 2: ค่าชิป+ค่าส่ง)</div>
   </div>
-  <div class="total-display">ยอดชำระค่าผลิต (ไม่รวมชิปปิ้ง): <span id="total-amount">0</span> บาท</div>
-  <label>ยอดโอน (บาท)</label>
-  <input type="number" id="pay_amount" placeholder="เช่น 1000">
-  <label>วันที่โอน</label>
-  <input type="date" id="pay_date">
-  <label>เวลาโอน</label>
-  <input type="time" id="pay_time">
-  <div class="terms-box">
-    <div><strong>สั่งชิ้นงานผลิต = ยอมรับเงื่อนไข</strong></div>
-    <div style="margin-top:10px;">หากเปลี่ยนแปลง/ยกเลิก ไม่คืนเงินทุกกรณี</div>
-    <div style="margin-top:8px; font-weight:bold;">❗️ อ่านให้ละเอียด ❗️</div>
-    <ul style="padding-left:20px; margin:8px 0;">
-      <li>1. ไม่เปลี่ยนแปลงขนาดหลังชำระเงิน</li>
-      <li>2. ไม่ยกเลิกการสั่งผลิต (ไม่ว่าเหตุใด)</li>
-      <li>3. ยอมรับกรณีสินค้าไม่ถึงตามกำหนดวัน จะไม่มีการเรียกร้องใดๆ เนื่องจากระยะเวลาการสั่งผลิตของถึงไทยเป็นแค่การคาดการณ์+-วันให้ตามจริง แต่หากเกิดสินค้าติดด่านตรวจจะไม่สามารถดำเนินการใด ๆ ได้</li>
-    </ul>
-    <div style="margin-top:8px;">กรุณาตัดสินใจก่อนสั่งผลิต หากต้องการเพิ่มจำนวนภายหลังกรณีนี้สามารถแจ้งได้ทางไลน์</div>
+
+  <!-- ขั้นที่ 4: แจ้งการโอน -->
+  <div class="step" data-step="4">
+    <div class="step-title">ขั้นที่ 4: แจ้งการโอน</div>
+    <label>ยอดโอน (บาท)</label>
+    <input type="number" id="pay_amount" placeholder="เช่น 1000">
+    <label>วันที่โอน</label>
+    <input type="date" id="pay_date">
+    <label>เวลาโอน</label>
+    <input type="time" id="pay_time">
   </div>
-  <button class="btn-submit" onclick="sendOrder()">กดส่งข้อมูลผลิต</button>
+
+  <!-- ขั้นที่ 5: ยืนยัน -->
+  <div class="step" data-step="5">
+    <div class="step-title">ขั้นที่ 5: ยืนยันการสั่งผลิต</div>
+    <div class="terms-box">
+      <div><strong>สั่งชิ้นงานผลิต = ยอมรับเงื่อนไข</strong></div>
+      <div style="margin-top:10px;">หากเปลี่ยนแปลง/ยกเลิก ไม่คืนเงินทุกกรณี</div>
+      <div style="margin-top:8px; font-weight:bold;">❗️ อ่านให้ละเอียด ❗️</div>
+      <ul style="padding-left:20px; margin:8px 0;">
+        <li>1. ไม่เปลี่ยนแปลงขนาดหลังชำระเงิน</li>
+        <li>2. ไม่ยกเลิกการสั่งผลิต (ไม่ว่าเหตุใด)</li>
+        <li>3. ยอมรับกรณีสินค้าไม่ถึงตามกำหนดวัน จะไม่มีการเรียกร้องใดๆ เนื่องจากระยะเวลาการสั่งผลิตของถึงไทยเป็นแค่การคาดการณ์+-วันให้ตามจริง แต่หากเกิดสินค้าติดด่านตรวจจะไม่สามารถดำเนินการใด ๆ ได้</li>
+      </ul>
+      <div style="margin-top:8px;">กรุณาตัดสินใจก่อนสั่งผลิต หากต้องการเพิ่มจำนวนภายหลังกรณีนี้สามารถแจ้งได้ทางไลน์</div>
+    </div>
+  </div>
+
+  <div class="step-nav">
+    <button type="button" class="btn-back" id="btn-back" onclick="prevStep()">ย้อนกลับ</button>
+    <button type="button" class="btn-next" id="btn-next" onclick="nextStep()">ถัดไป</button>
+    <button type="button" class="btn-submit" id="btn-submit" onclick="sendOrder()" style="display:none;">กดส่งข้อมูลผลิต</button>
+  </div>
 </div>
 
 <script>
@@ -481,6 +529,80 @@ function getPartFee(item){
   return plus * PART_FEE_PER_PIECE;
 }
 
+// ================================================================
+// ระบบขั้นตอน (ทีละขั้น)
+// ================================================================
+const TOTAL_STEPS = 5;
+const STEP_NAMES = ["ข้อมูลผู้สั่ง","เลือกสินค้า","ยอดชำระ","แจ้งการโอน","ยืนยันการสั่งผลิต"];
+let currentStep = 1;
+
+function showStep(n){
+  currentStep = n;
+  document.querySelectorAll('.step').forEach(s => {
+    s.style.display = Number(s.dataset.step) === n ? 'block' : 'none';
+  });
+  document.getElementById('step-label').textContent = `ขั้นที่ ${n} จาก ${TOTAL_STEPS}: ${STEP_NAMES[n-1]}`;
+  document.getElementById('step-fill').style.width = (n / TOTAL_STEPS * 100) + '%';
+  document.getElementById('btn-back').style.display = n === 1 ? 'none' : 'block';
+  document.getElementById('btn-next').style.display = n === TOTAL_STEPS ? 'none' : 'block';
+  document.getElementById('btn-submit').style.display = n === TOTAL_STEPS ? 'block' : 'none';
+  document.getElementById('order-form-container').scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+function nextStep(){
+  if(!validateStep(currentStep)) return;
+  if(currentStep < TOTAL_STEPS) showStep(currentStep + 1);
+}
+
+function prevStep(){
+  if(currentStep > 1) showStep(currentStep - 1);
+}
+
+function validateStep(n){
+  if(n === 1){
+    const twitter = document.getElementById('twitter').value.trim();
+    const line = document.getElementById('line').value.trim();
+    const drive_link = document.getElementById('drive_link').value.trim();
+    if(!twitter || !line || !drive_link){ alert('กรุณากรอก Twitter, ชื่อไลน์, และ Google Drive Link'); return false; }
+    return true;
+  }
+  if(n === 2){ return validateItems(); }
+  if(n === 4){
+    const pay_amount = document.getElementById('pay_amount').value.trim();
+    const pay_date = document.getElementById('pay_date').value;
+    const pay_time = document.getElementById('pay_time').value;
+    if(!pay_amount || !pay_date || !pay_time){ alert('กรุณากรอกข้อมูลการโอน (ยอดโอน, วันที่, เวลา)'); return false; }
+    return true;
+  }
+  return true;
+}
+
+function checkItem(item){
+  const type=item.querySelector('.p-type').value, size=item.querySelector('.p-size').value, qty=item.querySelector('.p-qty').value;
+  const unitEl=item.querySelector('.p-unitqty'), unitQty=parseInt(unitEl?unitEl.value:0)||0;
+  const extraBox=item.querySelector('.extra-info-box'), extraInp=item.querySelector('.p-extra');
+  const extraVisible=extraBox&&extraBox.style.display!=='none';
+  let ok = !!(type && size && qty);
+  if(isFreeQty(type)) ok = ok && unitQty >= 200;
+  else if(isPerPiece(type)) ok = ok && unitQty > 0;
+  if(!fishValid(item)) ok = false;
+  if(extraVisible&&extraInp&&EXTRA_INFO[type]&&EXTRA_INFO[type].required&&!extraInp.value.trim()){
+    ok = false; extraInp.style.borderColor='#d63384';
+  } else if(extraInp){ extraInp.style.borderColor=''; }
+  item.classList.toggle('error', !ok);
+  return ok;
+}
+
+function validateItems(){
+  let valid = true;
+  document.querySelectorAll('.product-item').forEach(item => { if(!checkItem(item)) valid = false; });
+  if(!valid){ alert('กรุณากรอกรายละเอียดให้ครบ รวมถึงจำนวนที่ต้องการ (สินค้าสั่ง 200 ชิ้นขึ้นไปต้องไม่ต่ำกว่า 200) และข้อมูลสี/เบอร์อะไหล่ของสินค้าที่มีเครื่องหมาย ✳️'); }
+  return valid;
+}
+
+// ================================================================
+// ฟังก์ชันฟอร์ม
+// ================================================================
 let productCount = 0;
 function initForm(){
   // ลิงก์ไม่ถูกต้อง: ซ่อนฟอร์มทั้งหมด ไม่แสดงข้อความใดๆ ให้ลูกค้า
@@ -489,6 +611,7 @@ function initForm(){
     return;
   }
   addProduct();
+  showStep(1);
 }
 function getSizeOptions(type){ return PRICE_DB[type] ? Object.keys(PRICE_DB[type]) : []; }
 function getQtyOptions(type,size){ return PRICE_DB[type] && PRICE_DB[type][size] ? Object.keys(PRICE_DB[type][size]) : []; }
@@ -738,28 +861,14 @@ function closeSuccessOverlay(){
 }
 
 function sendOrder(){
-  const btn=document.querySelector('.btn-submit');
+  // ตรวจทุกขั้นตอนก่อนส่ง ถ้าไม่ครบจะพากลับไปขั้นที่ขาด
+  for(let n = 1; n < TOTAL_STEPS; n++){
+    if(!validateStep(n)){ showStep(n); return; }
+  }
+  const btn=document.getElementById('btn-submit');
   const twitter=document.getElementById('twitter').value.trim(), line=document.getElementById('line').value.trim(), drive_link=document.getElementById('drive_link').value.trim();
   const pay_amount=document.getElementById('pay_amount').value.trim(), pay_date=document.getElementById('pay_date').value, pay_time=document.getElementById('pay_time').value;
   const items=document.querySelectorAll('.product-item');
-  let itemsValid=true;
-  if(!twitter||!line||!drive_link){ alert('กรุณากรอก Twitter, ชื่อไลน์, และ Google Drive Link'); return; }
-  if(!pay_amount||!pay_date||!pay_time){ alert('กรุณากรอกข้อมูลการโอน (ยอดโอน, วันที่, เวลา)'); return; }
-  items.forEach(item=>{
-    const type=item.querySelector('.p-type').value, size=item.querySelector('.p-size').value, qty=item.querySelector('.p-qty').value;
-    const unitEl=item.querySelector('.p-unitqty'), unitQty=parseInt(unitEl?unitEl.value:0)||0;
-    const extraBox=item.querySelector('.extra-info-box'), extraInp=item.querySelector('.p-extra');
-    const extraVisible=extraBox&&extraBox.style.display!=='none';
-    let ok = !!(type && size && qty);
-    if(isFreeQty(type)) ok = ok && unitQty >= 200;
-    else if(isPerPiece(type)) ok = ok && unitQty > 0;
-    if(!fishValid(item)) ok = false;
-    if(extraVisible&&extraInp&&EXTRA_INFO[type]&&EXTRA_INFO[type].required&&!extraInp.value.trim()){
-      ok = false; extraInp.style.borderColor='#d63384';
-    } else if(extraInp){ extraInp.style.borderColor=''; }
-    if(!ok){ itemsValid=false; item.classList.add('error'); }
-  });
-  if(!itemsValid){ alert('กรุณากรอกรายละเอียดให้ครบ รวมถึงจำนวนที่ต้องการ (สินค้าสั่ง 200 ชิ้นขึ้นไปต้องไม่ต่ำกว่า 200) และข้อมูลสี/เบอร์อะไหล่ของสินค้าที่มีเครื่องหมาย ✳️'); return; }
 
   btn.disabled=true; btn.textContent='กำลังส่ง...';
 
@@ -795,6 +904,7 @@ function sendOrder(){
       document.getElementById('product-list').innerHTML=''; productCount=0; addProduct(); calculateTotal();
       showSuccessOverlay();
       btn.disabled=false; btn.textContent='กดส่งข้อมูลผลิต';
+      showStep(1);
     });
 }
 
