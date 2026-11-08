@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>@the_mum_meow - ฟอร์มสั่งผลิต</title>
+<title>The Mum Meow - ฟอร์มสั่งผลิต</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&display=swap');
 * { box-sizing: border-box; }
@@ -27,11 +27,9 @@ input:focus, select:focus { outline:none; border-color:#76615b; }
 .info-box { background:#fffcfd; border:1px solid #f1dbf0; padding:15px; border-radius:10px; margin-bottom:15px; color:#76615b; font-size:0.9rem; line-height:1.6; }
 .info-box a { color:#d63384; font-weight:bold; text-decoration:none; }
 .info-box a:hover { text-decoration:underline; }
-.info-subbox { background:#fffcfd; border:1px solid #f1dbf0; border-radius:10px; padding:12px 15px; margin-bottom:12px; color:#76615b; font-size:0.9rem; line-height:1.6; }
-.info-subbox:last-of-type { margin-bottom:12px; }
 .payment-info { background:#fffcfd; border:2px solid #f1dbf0; padding:20px; border-radius:12px; margin-bottom:20px; color:#76615b; line-height:1.8; }
 .payment-info div { margin-bottom:8px; }
-/* ── EXTRA INFO BOX ── */
+.fish-box { margin-top:4px; margin-bottom:10px; padding:12px 14px; background:#f7fbff; border:1.5px dashed #6c9bd2; border-radius:10px; }
 .extra-info-box { margin-top:4px; margin-bottom:10px; padding:12px 14px; background:#fff8fe; border:1.5px dashed #d63384; border-radius:10px; }
 .extra-info-box .extra-label { font-size:0.82rem; color:#d63384; font-weight:700; margin-bottom:8px; margin-top:0; display:block; }
 .extra-info-box .extra-note { font-size:0.82rem; color:#76615b; margin-bottom:10px; line-height:1.6; }
@@ -41,40 +39,21 @@ input:focus, select:focus { outline:none; border-color:#76615b; }
 .extra-info-box label { margin-top:6px; }
 .extra-info-box input[type="text"] { margin-bottom:0; border-color:#f1a8d0; }
 .extra-info-box input[type="text"]:focus { border-color:#d63384; }
-/* ── SUCCESS OVERLAY ── */
-#success-overlay {
-  display:none;
-  position:fixed; top:0; left:0; width:100%; height:100%;
-  background:rgba(70,50,55,0.55);
-  z-index:9999;
-  align-items:center; justify-content:center;
-  padding:20px;
-}
+#success-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(70,50,55,0.55); z-index:9999; align-items:center; justify-content:center; padding:20px; }
 #success-overlay.show { display:flex; }
-.success-card {
-  background:#fff; border-radius:18px; padding:32px 24px; max-width:400px; width:100%;
-  text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.2);
-  font-family:'Sarabun',sans-serif;
-}
+.success-card { background:#fff; border-radius:18px; padding:32px 24px; max-width:400px; width:100%; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.2); font-family:'Sarabun',sans-serif; }
 .success-icon { font-size:3rem; margin-bottom:10px; }
 .success-title { font-size:1.2rem; font-weight:600; color:#76615b; margin-bottom:12px; }
 .success-text { font-size:0.9rem; color:#76615b; line-height:1.7; margin-bottom:20px; }
-.success-line-btn {
-  display:block; background:#06C755; color:#fff; text-decoration:none;
-  padding:14px; border-radius:25px; font-weight:600; margin-bottom:12px;
-}
+.success-line-btn { display:block; background:#06C755; color:#fff; text-decoration:none; padding:14px; border-radius:25px; font-weight:600; margin-bottom:12px; }
 .success-line-btn:hover { background:#05a648; }
-.success-close-btn {
-  display:block; background:#f1dbf0; color:#76615b; border:none;
-  padding:12px; border-radius:25px; font-weight:600; width:100%; cursor:pointer; font-size:0.95rem;
-}
+.success-close-btn { display:block; background:#f1dbf0; color:#76615b; border:none; padding:12px; border-radius:25px; font-weight:600; width:100%; cursor:pointer; font-size:0.95rem; }
 .success-close-btn:hover { background:#e8c8e6; }
 </style>
 </head>
 <body>
 <div id="order-form-container">
 
-  <!-- ── SUCCESS OVERLAY ── -->
   <div id="success-overlay">
     <div class="success-card">
       <div class="success-icon">✅</div>
@@ -89,22 +68,11 @@ input:focus, select:focus { outline:none; border-color:#76615b; }
   </div>
 
   <div class="info-box">
-    <div style="text-align:center; margin-bottom:8px;">
-      <img src="https://i.ibb.co/LXgSzL8G/pnglogo.png" alt="@the_mum_meow" style="max-width:160px; border-radius:8px;">
-    </div>
-    <div style="margin-bottom:8px;"><strong> Lot.BTS26 รับเฉพาะพวงกุญแจ 3 cm หรือ 5 cm 100-200 ชิ้น และ Card holder 100 ชิ้นต่อแบบ </strong></div>
-
-    <div class="info-subbox">
-      <div style="margin-bottom:8px;"><strong>กรุณาอ่านรายละเอียดก่อนสั่งผลิต: ของถึงไทย 20-25 พ.ย.</strong></div>
-      <div><a href="https://themummeow.carrd.co/#tos" target="_blank">คลิกอ่านที่นี่</a> หากส่งออเดอร์ = ยอมรับเงื่อนไข</div>
-    </div>
-
-    <div class="info-subbox">
-      <div style="margin-bottom:8px;"><strong>เทมเพลต</strong></div>
-      <div style="margin-bottom:8px;"><a href="https://themummeow.carrd.co/#template" target="_blank">คลิกอ่านที่นี่</a> หากส่งออเดอร์ = ยอมรับเงื่อนไข</div>
-      <div>ไม่รับงานเร่งผลิตทุกกรณี ใช้เวลาผลิตรวมส่งกลับไทย 25 วัน</div>
-    </div>
-
+    <div style="margin-bottom:8px;"><strong>Lot.144 : สินค้าถึงไทย 19 ธ.ค. 69</strong></div>
+    <div style="margin-bottom:8px;"><strong>อะครีิลิคครบโควต้า 4,000 ชิ้นปิดรับทันที</strong></div>
+    <div style="margin-bottom:8px;"><strong>กรุณาอ่านรายละเอียดก่อนสั่งผลิต:</strong></div>
+    <div style="margin-bottom:8px;"><a href="https://themummeow.carrd.co/#tos" target="_blank">คลิกอ่านที่นี่</a> หากส่งออเดอร์ = ยอมรับเงื่อนไข</div>
+    <div style="margin-bottom:8px;">🚨 ปิดรับรอบศุกร์ที่ 13 พ.ย. 69 เวลา 22.00 น.</div>
     <div style="border-top:1px solid #f1dbf0; padding-top:10px; font-weight:bold;">📁 กรุณานำไฟล์งานลง Google Drive ก่อนกรอกฟอร์ม</div>
   </div>
   <label>บัญชี X / Twitter</label>
@@ -114,15 +82,24 @@ input:focus, select:focus { outline:none; border-color:#76615b; }
   <label>ลิงก์ Google Drive (ไฟล์งาน)</label>
   <input type="text" id="drive_link" placeholder="https://drive.google.com/...">
   <div id="product-list"></div>
-  <button type="button" class="btn-add" onclick="addProduct()">+ เพิ่มรายการสั่งซื้อ (สูงสุด 6 รายการ)</button>
+  <button type="button" class="btn-add" onclick="addProduct()"> กด + เพิ่มรายการสั่งซื้อ (สูงสุด 10 รายการ)</button>
   <div class="payment-info">
     <div style="font-weight:bold; margin-bottom:5px;">จ่ายรอบแรก เฉพาะค่าผลิตสินค้า</div>
     <div>❌ ยังไม่ต้องชำระค่าจัดส่ง</div>
-    <div style="font-weight:bold; font-size:1.15rem; margin:10px 0;">🏦 919-2-54566-4</div>
-    <div>ธนาคารทหารไทยธนชาติ TTB </div>
+    <div style="font-weight:bold; font-size:1.15rem; margin:10px 0;">🏦 251-2-13308-2</div>
+    <div>ธนาคารไทยพาณิช (SCB)</div>
     <div>- ชิษณุชา / Chitsanucha</div>
+
+    <div style="font-weight:bold; font-size:1.15rem; margin:10px 0;">🏦 หรือชำระด้วย True Money</div>
+
+    <div style="margin:20px 0; text-align:center;">
+      <a href="https://i.ibb.co/vC48ZJJf/Receive-Money-QR-2026-10-30-23-49-29.png" target="_blank" rel="noopener" style="display:block; text-decoration:none;">
+        <img src="https://i.ibb.co/vC48ZJJf/Receive-Money-QR-2026-10-30-23-49-29.png" alt="ภาพประกอบ" loading="lazy" style="width:100%; max-width:460px; border-radius:12px; border:1px solid #f1dbf0; display:block; margin:0 auto;">
+      </a>
+      <div style="font-size:0.73rem; color:#aaa; margin-top:6px;">คลิกที่ภาพเพื่อดูขนาดเต็ม</div>
+    </div>
     <div style="font-weight:bold; margin-top:10px;">📌 ทางร้านจะรับคำสั่งซื้อต่อเมื่อโอนชำระแล้ว 📌</div>
-    <div style="color:#d63384;">⚠️ เรียกชำระ 2 รอบ (รอบ 2 ชิปปิ้ง+EMS)</div>
+    <div style="color:#d63384;">⚠️ เรียกชำระ 2 รอบ (รอบ 2: ค่าชิป+ค่าส่ง)</div>
   </div>
   <div class="total-display">ยอดชำระค่าผลิต (ไม่รวมชิปปิ้ง): <span id="total-amount">0</span> บาท</div>
   <label>ยอดโอน (บาท)</label>
@@ -139,10 +116,6 @@ input:focus, select:focus { outline:none; border-color:#76615b; }
       <li>1. ไม่เปลี่ยนแปลงขนาดหลังชำระเงิน</li>
       <li>2. ไม่ยกเลิกการสั่งผลิต (ไม่ว่าเหตุใด)</li>
       <li>3. ยอมรับกรณีสินค้าไม่ถึงตามกำหนดวัน จะไม่มีการเรียกร้องใดๆ เนื่องจากระยะเวลาการสั่งผลิตของถึงไทยเป็นแค่การคาดการณ์+-วันให้ตามจริง แต่หากเกิดสินค้าติดด่านตรวจจะไม่สามารถดำเนินการใด ๆ ได้</li>
-      <li>4. กรณีสั่งรอบทดลอง งานของลูกค้าจะถูกถ่ายภาพไปใช้นำเป็นตัวอย่างแสดงบนโซเชียล แต่ไม่มีการนำไปผลิตซ้ำทุกกรณี ทางร้านมิสนับสนุนการคัดลอกชิ้นงาน</li>
-      <li>5. งานทดลองผลิตพวงกุญแจ NFC ขอคนรอของได้หาคิวไม่ได้ในรอบพร้อมส่ง ไม่รับงานเร่ง จัดทำตามลำดับเท่านั้น</li>
-      <li>6. งานtest พวงกุญแจ 50-100 ชิ้นรอบ 2 เก็บ 95฿ รวม ems 
-200 ชิ้นหนัก 1.2 kg คิดตามกิโล 75฿ + ems ตามน้ำหนัก รวมชำระ 145-200฿ *ทั้งนี้รูปทรงของภาพมีผลต่อน้ำหนักค่ะ</li>
     </ul>
     <div style="margin-top:8px;">กรุณาตัดสินใจก่อนสั่งผลิต หากต้องการเพิ่มจำนวนภายหลังกรณีนี้สามารถแจ้งได้ทางไลน์</div>
   </div>
@@ -150,26 +123,287 @@ input:focus, select:focus { outline:none; border-color:#76615b; }
 </div>
 
 <script>
-const PRICE_DB = {
+// ================================================================
+// ข้อมูลสินค้าทั้งหมด (ชุดล่าสุด ไม่แก้ไข)
+// ================================================================
+const PRICE_DB_ALL = {
 
-  "พวงกุญแจ รวมแพคแยกซอง ": { "3cm": { "100 ชิ้น ❌คละลายไม่ได้": 320, "200 ชิ้น ❌คละลายไม่ได้": 600}, "5cm":{ "100 ชิ้น ❌คละลายไม่ได้": 480, "200 ชิ้น ❌คละลายไม่ได้": 900}
+  "pro พวงกุญแจ/อะคริลิตไม่เจาะรู ❌คละลายไม่ได้|ไม่มีไข่ปลา": {
+    "4cm เจาะรูพวงกุญแจ": {"50 ❌คละลายไม่ได้":130,"100 ❌คละลายไม่ได้":260,"200 ❌คละลายไม่ได้":500},
+    "4cm ไม่เจาะรู": {"50 ❌คละลายไม่ได้":130,"100 ❌คละลายไม่ได้":260,"200 ❌คละลายไม่ได้":500}
+  },
 
-},
+  "📥ทดลอง mini slogan": {
+    "ุ6x12cm แบบธรรมดา":{"5 ชิ้น":240,"10 ชิ้น":350},
+    "6x12cm แบบflash📸":{"1 ชิ้น":90,"5 ชิ้น":320,"10 ชิ้น":490}
+  },
 
-  "สแตนดี้ รวมแพคแยกซอง ":  { "3cm": { "100 ชิ้น ❌คละลายไม่ได้": 320, "200 ชิ้น ❌คละลายไม่ได้": 600}, "5cm":{ "100 ชิ้น ❌คละลายไม่ได้": 480, "200 ชิ้น ❌คละลายไม่ได้": 900}
+  "pro card holder 111 ขิ้น": {
+    "6.8x11cm": {"111 ชิ้น":899}
+  },
 
-},
+  "📥ทดลอง mini pouch doll": {
+    "10x10cm":{"1 ใบ":115}
+  },
 
-  "card holder": {
-    "6.8x11cm": { "100 ชิ้น ❌คละลายไม่ได้": 890 }
+  "pro photocard 500 ใบ ซื้อ 3 แถม 1": {
+    "5.4x8.5cm":{"2000 ใบ 4 ลาย ลายละ 500 ใบ":555}
+  },
+
+  "📥ทดลองผลิต keychain choco plaque": {
+    "4 cm":{"10❌คละลายไม่ได้ เลือกสีอะคริลิคไม่ได้":175,"100❌คละลายไม่ได้ เลือกสีอะคริลิคได้":1450},
+    "5 cm":{"10❌คละลายไม่ได้ เลือกสีอะคริลิคไม่ได้":200,"100❌คละลายไม่ได้ เลือกสีอะคริลิคได้":1650}
+  },
+
+  "📥pro กิ๊บติดผม/hair clip": {
+    "4 cm":{"20":220,"30":315,"50":500,"100":950}
+  },
+
+  "Griptok Magsafe พิมพ์ฐาน ❌คละลายไม่ได้": {
+    "5cm":{"10":450,"20":810,"30":1180,"50":1920},
+    "6cm":{"10":480,"20":950,"30":1370,"50":2150}
+  },
+
+  "ใหม่ ! mini handfan": {
+    "5x5cm":{"30":300,"50":425,"100":605,"200":1000}
+  },
+
+  "พวงกุญแจอะคริลิค ด้านเดียว(ราคาปกติ)": { "3 cm":{"20❌คละลายไม่ได้":127,"30❌คละลายไม่ได้":150,"50":170,"100":320},"4 cm":{"20❌คละลายไม่ได้":140,"30❌คละลายไม่ได้":170,"50":240,"100":380},"5 cm":{"20❌คละลายไม่ได้":170,"30❌คละลายไม่ได้":198,"50":280,"100":480},"6 cm":{"20❌คละลายไม่ได้":215,"30❌คละลายไม่ได้":298,"50":330,"100":590},"7 cm":{"20❌คละลายไม่ได้":250,"30❌คละลายไม่ได้":310,"50":420,"100":720},"10 cm":{"20❌คละลายไม่ได้":290,"30❌คละลายไม่ได้":420,"50":660,"100":1255},"12 cm":{"20❌คละลายไม่ได้":490,"30❌คละลายไม่ได้":685,"50":1190,"100":2225},"15 cm":{"20❌คละลายไม่ได้":535,"30❌คละลายไม่ได้":789,"50":1290,"100":2590} },
+
+  "สแตนดี้อะคริลิค ด้านเดียว(ราคาปกติ)": { "3 cm":{"20❌คละลายไม่ได้":127,"30❌คละลายไม่ได้":150,"50":170,"100":320},"4 cm":{"20❌คละลายไม่ได้":140,"30❌คละลายไม่ได้":170,"50":240,"100":380},"5 cm":{"20❌คละลายไม่ได้":170,"30❌คละลายไม่ได้":198,"50":280,"100":480},"6 cm":{"20❌คละลายไม่ได้":215,"30❌คละลายไม่ได้":298,"50":330,"100":590},"7 cm":{"20❌คละลายไม่ได้":250,"30❌คละลายไม่ได้":310,"50":420,"100":720},"10 cm":{"20❌คละลายไม่ได้":290,"30❌คละลายไม่ได้":420,"50":660,"100":1255},"12 cm":{"20❌คละลายไม่ได้":490,"30❌คละลายไม่ได้":685,"50":1190,"100":2225},"15 cm":{"20❌คละลายไม่ได้":535,"30❌คละลายไม่ได้":789,"50":1290,"100":2590} },
+
+  "Griptok ฐานใส 5cm/6cm": { "5 cm":{"20":230,"30":330,"50":480},"6 cm":{"20":310,"30":420,"50":650} },
+
+  "งานอะคริลิค พิมพ์หน้าหลังคนละลาย": { "4 cm":{"50":290},"5 cm":{"50":320},"6 cm":{"50":390},"7 cm":{"50":520} },
+
+  "อะคริลิคพิมพ์ลายไม่เจาะรู": { "2cm":{"20":80,"50":175,"100":300} },
+
+  "อะคริลิคติดตู้เย็น": { "5 cm":{"20":180,"30":265,"50":400} },
+
+  "ตัวห้อยมือถือ": { "3 cm":{"20":120,"30":170,"50":280,"100":470} },
+
+  "อะคริลิคเก็บหูฟัง": { "6cm": {"20 ชิ้น":420} },
+
+  "ตัวหนีบอะคริลิค 4 cm": { "4 cm":{"20 ❌คละลายไม่ได้":300,"30 ❌คละลายไม่ได้":435,"50 ❌คละลายไม่ได้":700,"100 ❌คละลายไม่ได้":1300} },
+
+  "ตัวถนอมสายชาร์จอะคริลิค": { "3 cm":{"20":120,"30":170,"50":280,"100":470} },
+
+  "พวงกุญแจห้อยคู่": { "4+2 cm":{"20":260,"30":375,"50":575},"5+2 cm":{"20":280,"30":400,"50":600} },
+
+  "สั่งมากกว่า 200 ชิ้น พวงกุญแจอะคริลิค ด้านเดียว": {
+    "3 cm": {"200 ชิ้น":3},
+    "4 cm": {"200 ชิ้น":3.5},
+    "5 cm": {"200 ชิ้น":4.5},
+    "6 cm": {"200 ชิ้น":5.7},
+    "10 cm": {"200 ชิ้น":12.3},
+    "12 cm": {"200 ชิ้น":22},
+    "15 cm": {"200 ชิ้น":25.5}
+  },
+
+  "สั่งมากกว่า 200 ชิ้น สแตนดี้อะคริลิค ด้านเดียว": {
+    "3 cm": {"200 ชิ้น":3},
+    "4 cm": {"200 ชิ้น":3.5},
+    "5 cm": {"200 ชิ้น":4.5},
+    "6 cm": {"200 ชิ้น":5.7},
+    "10 cm": {"200 ชิ้น":12.3},
+    "12 cm": {"200 ชิ้น":22},
+    "15 cm": {"200 ชิ้น":25.5}
+  },
+
+  "สั่งมากกว่า 200 ชิ้น ตัวถนอมสายชาร์จอะคริลิค(cable protector)": {
+    "3 cm": {"200 ชิ้น":4.5}
+  },
+
+  "cardholder สั่งมากกว่า 110 ชิ้น": {
+    "6.8x11 cm": {"110 ชิ้นขึ้นไป":8.5,"200 ชิ้นขึ้นไป":8,"300 ชิ้นขึ้นไป":7.9}
+  },
+
+  "photocard เคลือบด้าน": { "5.4x8.5cm": {"200":80,"500":185,"1000":230} },
+
+  "ถุงPVC bag สกรีน UV": { "16x20 cm":{"10":160} },
+
+  "🆕 ecobag new era": { "40x57cm":{"1":95,"20":1200} },
+
+  "ป้ายเชียร์สะท้อนแสง look at me A(สิ)4": { "A4":{"1 ใบ":90} },
+
+  "ถุงสปัน": { " 30x40cm ถุงขาวหูดำ":{"50":756} },
+
+  "ถุง Eco bag 1 Logo": { "37x42 cm":{"1-19 ใบ":75,"20-49 ใบ":59,"50 ใบ+":54} },
+
+  "ถุง Eco bag พิมพ์เต็มใบ": { "60x41 cm":{"1-4 ใบ":190,"5-20 ใบ":116,"21-50 ใบ":68} },
+
+  "ปิ๊กกีต้าร์ (คละลายไม่ได้)": { "30 mm":{"20":270,"30":340,"50":450,"100":760} },
+
+  "sticker dicut 50%": { "5 cm":{"1000❌คละลายไม่ได้":150,"2000❌คละลายไม่ได้":270} },
+
+  "สายคล้องคอ Lanyard": { "2x92 cm":{"30":650,"50":860,"100":1200},"2x33 cm":{"20":485,"50":780,"100":1100} },
+
+  "card holder แบบแข็ง": { "6.8x11 cm":{"10":150,"50":590,"100":890} },
+
+  "เฟรมการ์ด ❌คละลายไม่ได้": { "26.5x9.2 cm":{"1-9 ชิ้น":135,"10-50 ชิ้น":50,"51-100 ชิ้น":30,"101-199 ชิ้น":26,"200 ชิ้นขั้นไป":23} },
+
+  "miniframcard": { "4.5x7.5 cm":{"10":25,"11-49 ชิ้น":25,"50+ ชิ้น":21},"หัวใจ 2 ภาพ":{"ชิ้นละ 42บาท ขั้นต่ำ 10 ชิ้น":42} },
+
+  "การ์ดใสขนาด 5.5x8.5cm": { "5.5x8.5 cm":{"100":250} },
+
+  "พัดใส": { "17 cm":{"20":285,"50":480,"100":760} },
+
+  "พัด PP": { "17 cm":{"20":385,"50":680,"100":1200} },
+
+  "พวงกุญแจ pudding": { "4x4.5 cm":{"5":255,"20":840,"50":1260,"100":2000} },
+
+  "ทิชชู่": { "72x15x51 cm":{"30":260,"60":360,"100":460} },
+
+  "🆕💥ทดลองผลิต collagebook": { "11x14 cm":{"1":150,"10":690,"20":1200,"50":2750} },
+
+  "กระจก": { "7 cm":{"50":250,"100":390} },
+
+  "carabiner หนา 3mm (test Lot.141)": { "7cm": {"10":180,"30":480,"50":750,"100":1400} }
+
+};
+
+// ================================================================
+// การแบ่งหน้า: ?type=acrylic | bag | card | d
+// ชื่อกลุ่มเก็บไว้ในโค้ดเท่านั้น ไม่แสดงให้ลูกค้าเห็น
+// เปิดมาจะเลือกรายการแรกของกลุ่มให้อัตโนมัติ
+// ================================================================
+const GROUPS = {
+  acrylic: {
+    title: "กลุ่ม A: พวงกุญแจ / สแตนดี้ / อะคริลิค",
+    items: [
+      "pro พวงกุญแจ/อะคริลิตไม่เจาะรู ❌คละลายไม่ได้|ไม่มีไข่ปลา",
+      "📥pro กิ๊บติดผม/hair clip",
+      "พวงกุญแจอะคริลิค ด้านเดียว(ราคาปกติ)",
+      "สแตนดี้อะคริลิค ด้านเดียว(ราคาปกติ)",
+      "Griptok ฐานใส 5cm/6cm",
+      "งานอะคริลิค พิมพ์หน้าหลังคนละลาย",
+      "อะคริลิคพิมพ์ลายไม่เจาะรู",
+      "อะคริลิคติดตู้เย็น",
+      "ตัวห้อยมือถือ",
+      "อะคริลิคเก็บหูฟัง",
+      "ตัวหนีบอะคริลิค 4 cm",
+      "ตัวถนอมสายชาร์จอะคริลิค",
+      "พวงกุญแจห้อยคู่",
+      "สั่งมากกว่า 200 ชิ้น พวงกุญแจอะคริลิค ด้านเดียว",
+      "สั่งมากกว่า 200 ชิ้น สแตนดี้อะคริลิค ด้านเดียว",
+      "สั่งมากกว่า 200 ชิ้น ตัวถนอมสายชาร์จอะคริลิค(cable protector)"
+    ]
+  },
+  bag: {
+    title: "กลุ่ม B: ถุง",
+    items: ["ถุงสปัน", "ถุง Eco bag 1 Logo", "ถุง Eco bag พิมพ์เต็มใบ"]
+  },
+  card: {
+    title: "กลุ่ม C: Card",
+    items: ["card holder แบบแข็ง", "cardholder สั่งมากกว่า 110 ชิ้น", "pro card holder 111 ขิ้น"]
+  },
+  d: {
+    title: "กลุ่ม D: สินค้าเดี่ยว / ทดลอง",
+    items: [
+      "📥ทดลอง mini slogan",
+      "📥ทดลอง mini pouch doll",
+      "pro photocard 500 ใบ ซื้อ 3 แถม 1",
+      "📥ทดลองผลิต keychain choco plaque",
+      "Griptok Magsafe พิมพ์ฐาน ❌คละลายไม่ได้",
+      "ใหม่ ! mini handfan",
+      "photocard เคลือบด้าน",
+      "ถุงPVC bag สกรีน UV",
+      "🆕 ecobag new era",
+      "ป้ายเชียร์สะท้อนแสง look at me A(สิ)4",
+      "ปิ๊กกีต้าร์ (คละลายไม่ได้)",
+      "sticker dicut 50%",
+      "สายคล้องคอ Lanyard",
+      "เฟรมการ์ด ❌คละลายไม่ได้",
+      "miniframcard",
+      "การ์ดใสขนาด 5.5x8.5cm",
+      "พัดใส",
+      "พัด PP",
+      "พวงกุญแจ pudding",
+      "ทิชชู่",
+      "🆕💥ทดลองผลิต collagebook",
+      "กระจก",
+      "carabiner หนา 3mm (test Lot.141)"
+    ]
   }
 };
 
-const EXTRA_INFO = {
+function resolvePage(){
+  const p = new URLSearchParams(window.location.search).get('type');
+  if(!p || !GROUPS[p]) return null;
+  return { title: GROUPS[p].title, allowed: GROUPS[p].items, preset: GROUPS[p].items[0] };
+}
+const PAGE = resolvePage();
+const PRICE_DB = {};
+if(PAGE){ PAGE.allowed.forEach(name => { if(PRICE_DB_ALL[name]) PRICE_DB[name] = PRICE_DB_ALL[name]; }); }
 
-  "eco bag โรงงานใหม่ ปิดรับไฟล์ 4 ส.ค.": {
-    imgUrl:      "https://i.ibb.co/zWv6gqBp/1.png",
-    imgLink:     "https://ibb.co/6cCXSjTz",
+const EXTRA_INFO = {
+  "พวงกุญแจอะคริลิค ด้านเดียว(ราคาปกติ)": {
+    imgUrl:      "https://i.ibb.co/m5sPrk0d/7.png",
+    imgLink:     "https://ibb.co/xqvrKWYw",
+    note:        "📎 ดูภาพตัวอย่างอะไหล่ด้านบน แล้วระบุเบอร์อะไหล่ที่ต้องการ",
+    label:       "ระบุเบอร์อะไหล่พิเศษ (ถ้ามี)",
+    placeholder: "เช่น no.3",
+    required:    false
+  },
+  "พวงกุญแจห้อยคู่": {
+    imgUrl:      "https://i.ibb.co/m5sPrk0d/7.png",
+    imgLink:     "https://ibb.co/xqvrKWYw",
+    note:        "📎 ดูภาพตัวอย่างอะไหล่ด้านบน แล้วระบุเบอร์อะไหล่ที่ต้องการ\n⚠️ คละลายไม่ได้ — ต้องเป็นลายเดียวกันทั้งหมด",
+    label:       "ระบุเบอร์อะไหล่พิเศษ (ถ้ามี)",
+    placeholder: "เช่น no.3",
+    required:    false
+  },
+  "พวงกุญแจ pudding": {
+    imgUrl:      "https://i.ibb.co/6JZm7fY9/puddin.png",
+    imgLink:     "https://ibb.co/x8sDtRh9",
+    note:        "📎 ดูตัวเลือกสีด้านบน แล้วระบุสีที่ต้องการ\n⚠️ คละลายไม่ได้ — ต้องเป็นลายเดียวกันทั้งหมด",
+    label:       "ระบุสี pudding ที่ต้องการ ✳️",
+    placeholder: "เช่น pink-choco",
+    required:    true
+  },
+  "งานอะคริลิค พิมพ์หน้าหลังคนละลาย": {
+    imgUrl:      "https://i.ibb.co/dsB9Sy76/lilly-keychain.jpg",
+    imgLink:     "https://ibb.co/spjShrtQ",
+    note:        "📎 ดูภาพตัวอย่างด้านบน — งานนี้พิมพ์หน้า-หลังคนละลาย กรุณาระบุรายละเอียด",
+    label:       "ระบุรายละเอียดหน้า-หลัง ✳️",
+    placeholder: "เช่น หน้า: ลาย A / หลัง: ลาย B",
+    required:    true
+  },
+  "พวงกุญแจ/สแตนดี้เคลือบ Hologram ทดลองโรงงาน D เลือกสีไข่ปลาได้": {
+    imgUrl:      "https://i.ibb.co/dsB9Sy76/lilly-keychain.jpg",
+    imgLink:     "https://ibb.co/spjShrtQ",
+    note:        "📎 ระบุสีไซ่",
+    label:       "ระบุสีโซ่",
+    placeholder: "เช่น no.1 สีขาว",
+    required:    true
+  },
+  "พวงกุญแจ/สแตนดี้ ไล่สีพื้นหลัง ทดลองโรงงาน D เลือกสีไข่ปลาได้": {
+    imgUrl:      "https://i.ibb.co/dsB9Sy76/lilly-keychain.jpg",
+    imgLink:     "https://ibb.co/spjShrtQ",
+    note:        "📎 ระบุสีไซ่",
+    label:       "ระบุสีโซ่",
+    placeholder: "เช่น no.1 สีขาว",
+    required:    true
+  },
+  "ถุงสปัน": {
+    imgUrl:      "https://i.ibb.co/DfWzCsLR/1.png",
+    imgLink:     "https://ibb.co/1GQ7qhbm",
+    note:        "📎 ดูตัวเลือกสีถุงด้านบน แล้วระบุสีที่ต้องการ",
+    label:       "ระบุสีถุงสปัน ✳️",
+    placeholder: "เช่น ถุงขาวหูดำ",
+    required:    true
+  },
+  "📥ทดลองผลิต keychain choco plaque": {
+    imgUrl:      "https://i.ibb.co/9HZVKHDZ/491fba1658afd7df37ff1246540d79d1.jpg",
+    imgLink:     "https://ibb.co/SwfdYwjf",
+    note:        "📎 เลือกสีได้เฉพาะผู้ที่สั่ง 100 ชิ้น เท่านั้น",
+    label:       "เลือกสีได้เฉพาะผู้ที่สั่ง 100 ชิ้น ระบุรหัส",
+    placeholder: "เช่น สีม่วง 134",
+    required:    true
+  },
+  "ถุง Eco bag 1 Logo": {
+    imgUrl:      "https://i.ibb.co/DH9G4fpM/20250331-204702-72-F77-AF0-B531-4-F42-BA78-86-BC477-BD535.jpg",
+    imgLink:     "https://ibb.co/S4tQNwrm",
     note:        "📎 ดูตัวเลือกสีถุงด้านบน แล้วระบุสีที่ต้องการ",
     label:       "ระบุสีถุง Eco bag ✳️",
     placeholder: "เช่น สีครีม / สีดำ / สีน้ำเงิน",
@@ -177,12 +411,85 @@ const EXTRA_INFO = {
   }
 };
 
-// ⭐ สินค้าคิดราคา "ต่อชิ้น/ต่อใบ" → โชว์ช่องกรอกจำนวนจริงมาคูณ (แก้ชื่อให้ตรง PRICE_DB แล้ว)
-const PER_PIECE = ["eco bag โรงงานใหม่ ปิดรับไฟล์ 4 ส.ค.","ถุง Eco bag พิมพ์เต็มใบ","เฟรมการ์ด"];
+// ⭐ สินค้าคิดราคา "ต่อชิ้น/ต่อใบ"
+const PER_PIECE = ["ถุง Eco bag 1 Logo","ถุง Eco bag พิมพ์เต็มใบ","เฟรมการ์ด ❌คละลายไม่ได้","ผ้าห่มนุ่ม","miniframcard","ชิ้นละ 42บาท ขั้นต่ำ 10 ชิ้น","สั่งมากกว่า 200 ชิ้น พวงกุญแจอะคริลิค ด้านเดียว","สั่งมากกว่า 200 ชิ้น สแตนดี้อะคริลิค ด้านเดียว","สั่งมากกว่า 200 ชิ้น ตัวถนอมสายชาร์จอะคริลิค(cable protector)","cardholder สั่งมากกว่า 110 ชิ้น"];
 function isPerPiece(type){ return PER_PIECE.indexOf(type) !== -1; }
 
+// ⭐ กลุ่มสั่งขั้นต่ำ 200 ชิ้น: ซ่อนตัวเลือกจำนวน กรอกจำนวนเอง
+const FREE_QTY_PREFIX = "สั่งมากกว่า 200 ชิ้น";
+const FREE_QTY_LABEL = "200 ชิ้น";
+function isFreeQty(type){ return type.indexOf(FREE_QTY_PREFIX) === 0; }
+
+// ⭐ รายการไข่ปลา
+const FISH_ITEM = "pro พวงกุญแจ/อะคริลิตไม่เจาะรู ❌คละลายไม่ได้|ไม่มีไข่ปลา";
+
+// ⭐ รายการที่มีช่องอะไหล่ (ชิ้นละ 2 บาท)
+const PART_ITEM = "พวงกุญแจอะคริลิค ด้านเดียว(ราคาปกติ)";
+const PART_FEE_PER_PIECE = 2;
+function isPartItem(type){ return type === PART_ITEM; }
+
+// ⭐ สีไข่ปลา
+const FISH_COLORS = [
+  { name:"#1 ฟ้าสด",  imgUrl:"https://i.ibb.co/RpsKqmZg/1688-image-share-808865ef97dc1c58e50b14a8a873660a.jpg" },
+  { name:"#2 ชมพูนม",   imgUrl:"https://i.ibb.co/RmpVxF0/1688-image-share-cf14e2bd3428d4f5aca34f08e3004cc0.jpg" },
+  { name:"#3 ขาวเทา",  imgUrl:"https://i.ibb.co/MDm32P6t/1688-image-share-493f000d42301e9451263a7ee306748d.jpg" },
+  { name:"#4 ส้มอ่อน",  imgUrl:"https://i.ibb.co/5hyjQzn1/1688-image-share-475c87c487e504afde3200e5fae80bea.jpg" },
+  { name:"#5 เขียวแอปเปิ้ล",  imgUrl:"https://i.ibb.co/93mdP9qW/1688-image-share-936d74fc8b5f108e300eb6d080fdc8c2.jpg" },
+  { name:"#6 เหลืองพาสเทล",  imgUrl:"https://i.ibb.co/JwMzy7D4/1688-image-share-b6152bbc67d63ca8ae03d5ef7f684f33.jpg" },
+  { name:"#7 เบสฟ้า cool tone",  imgUrl:"https://i.ibb.co/4RB1hsYw/1688-image-share-3a37a250ef76cbf9e9f0fdefd5a344e4.jpg" },
+  { name:"#8 ม่วงเข้มล์",  imgUrl:"https://i.ibb.co/RpqgCMtr/1688-image-share-337d4e32acbe467a867e62a50818ab45.jpg" },
+  { name:"#9 แดง ผึ้งชอบสีแดง",  imgUrl:"https://i.ibb.co/JjhPTJ0r/1688-image-share-492d48aab817b5ebd682d862be700a4a.jpg" },
+  { name:"#10 เหลืองเข้ม",  imgUrl:"https://i.ibb.co/BVYT6gZy/1688-image-share-970c48b97753ac25e605ac31de6ad2fb.jpg" },
+  { name:"#11 ชมพูบาร์บี้",  imgUrl:"https://i.ibb.co/zVLj8zr1/1688-image-share-d54d21fd1cdf370e4d1e652d5d77bc1e.jpg" },
+  { name:"#12 น้ำเงินเทสดี",  imgUrl:"https://i.ibb.co/KjRPDHFJ/1688-image-share-55c9d9e17e1cedaf3e20ddfaa826b835.jpg" },
+  { name:"#13 เขียวนมหวาน 50%",  imgUrl:"https://i.ibb.co/jPJHmw6Y/1688-image-share-375649fbca1ad23f63cde5ab5dc3ac02.jpg" },
+  { name:"#14 ชมพูพาสเทล",  imgUrl:"https://i.ibb.co/ymBf2Jvr/1688-image-share-9831fb200f653e1cb77ce01a7a758f6a.jpg" },
+  { name:"#15 ชมพู Monopink",  imgUrl:"https://i.ibb.co/m57bzMPk/1688-image-share-64cdb71d065c60e12b416be17d5cb68e.jpg" },
+  { name:"#16 น้ำตาล",  imgUrl:"https://i.ibb.co/8LBcqhNy/1688-image-share-dc7975c910a8f2b5c6a033ec26cf49c4.jpg" },
+  { name:"#17 ส้มน้องข้าว",  imgUrl:"https://i.ibb.co/xqyzXnNC/1688-image-share-7053fe61732e2a3c941a933e3cb8ac83.jpg" },
+  { name:"#18 ม่วงอ่อนล์",  imgUrl:"https://i.ibb.co/6MwtJkC/1688-image-share-08ed5eb486c2cbf8acb12a49be4c1834.jpg" },
+  { name:"#19 เขียวมัทฉะ จากเมือง Yame",  imgUrl:"https://i.ibb.co/qYHKhmqc/1688-image-share-1cd69cff200d71a3bd6b2ebbbe6a7d15.jpg" },
+  { name:"#20 ฟ้าสว่าง",  imgUrl:"https://i.ibb.co/wZHs731K/1688-image-share-57b98a7a42a0eb68a9448c2d6d95a2fc.jpg" },
+  { name:"#21 โอรส",  imgUrl:"https://i.ibb.co/JWJKLRLn/1688-image-share-710d6f5cf9763a9bcb8b7fc00dfd0b0f.jpg" },
+  { name:"#22 ฟ้าพาสเทล",  imgUrl:"https://i.ibb.co/chbZ7WPS/1688-image-share-52c13cfac4b146436e7575d8c1b73587.jpg" },
+  { name:"#23 เหลืองสด",  imgUrl:"https://i.ibb.co/W4q4mVcP/1688-image-share-1052a325884d6ef12b01dd4b8fcb4143.jpg" },
+  { name:"#24 เขียวมิ้น",  imgUrl:"https://i.ibb.co/BHGJ9F2p/1688-image-share-03568b415f6ef4c5236f479e8edd472e.jpg" },
+  { name:"#25 สีครีม",  imgUrl:"https://i.ibb.co/bR2NncQS/1688-image-share-5b9d47335476187c42f3353df44bb35b.jpg" },
+  { name:"#26 เขียวมังกรหยก",  imgUrl:"https://i.ibb.co/hJH18nQF/1688-image-share-4d5d6470a61f22af8689090f08c276ee.jpg" },
+  { name:"#27 เบสม่วงอ่อนล์",  imgUrl:"https://i.ibb.co/Ld5s1YzM/1688-image-share-0a6ca2347428e8d289bb0c2c87cbc075.jpg" },
+  { name:"#28 (ใจ)ดำ",  imgUrl:"https://i.ibb.co/tTdX4pmK/1688-image-share-721acad4421a6799efa033ef4d4a8ba5.jpg" },
+  { name:"#29 เทา",  imgUrl:"https://i.ibb.co/SDDZk4jS/1688-image-share-5756037e98e98a3ee17eb395d68d4821.jpg" },
+  { name:"#30 เงิน", imgUrl:"https://i.ibb.co/DDSGxWWX/1688-image-share-c96d494c34d4be3ff472dcd9fafcf643.jpg" }
+];
+
+// ⭐ ค่าไข่ปลา เส้นละ 0.4 บาท (เฉพาะรับไข่ปลา)
+const FISH_FEE_PER_PIECE = 0.4;
+function getFishFee(item){
+  const type = item.querySelector('.p-type').value;
+  if(type !== FISH_ITEM) return 0;
+  const choice = item.querySelector('.p-fish-choice').value;
+  if(choice !== 'รับไข่ปลา') return 0;
+  const pieces = parseInt(item.querySelector('.p-qty').value) || 0;
+  return Math.round(pieces * FISH_FEE_PER_PIECE * 100) / 100;
+}
+
+// ⭐ ค่าอะไหล่ คิดเฉพาะรายการที่มีช่องอะไหล่
+function getPartFee(item){
+  const type = item.querySelector('.p-type').value;
+  if(!isPartItem(type)) return 0;
+  const plus = parseInt(item.querySelector('.p-plus').value) || 0;
+  return plus * PART_FEE_PER_PIECE;
+}
+
 let productCount = 0;
-function initForm(){ addProduct(); }
+function initForm(){
+  // ลิงก์ไม่ถูกต้อง: ซ่อนฟอร์มทั้งหมด ไม่แสดงข้อความใดๆ ให้ลูกค้า
+  if(!PAGE){
+    document.getElementById('order-form-container').style.display = 'none';
+    return;
+  }
+  addProduct();
+}
 function getSizeOptions(type){ return PRICE_DB[type] ? Object.keys(PRICE_DB[type]) : []; }
 function getQtyOptions(type,size){ return PRICE_DB[type] && PRICE_DB[type][size] ? Object.keys(PRICE_DB[type][size]) : []; }
 function getPrice(type,size,qty){ if(PRICE_DB[type]&&PRICE_DB[type][size]&&PRICE_DB[type][size][qty]) return PRICE_DB[type][size][qty]; return 0; }
@@ -190,7 +497,7 @@ function getPrice(type,size,qty){ if(PRICE_DB[type]&&PRICE_DB[type][size]&&PRICE
 function addProduct(){
   const container = document.getElementById('product-list');
   const items = container.getElementsByClassName('product-item');
-  if(items.length >= 6){ alert('สูงสุด 6 รายการ'); return; }
+  if(items.length >= 10){ alert('สูงสุด 10 รายการ'); return; }
   productCount++;
   const pc = productCount;
   const itemHtml = `
@@ -209,12 +516,38 @@ function addProduct(){
         <option value="">-- เลือกประเภทก่อน --</option>
       </select>
       <label id="qtylabel-${pc}">จำนวน</label>
-      <select class="p-qty" id="qty-${pc}" onchange="calculateTotal()">
+      <select class="p-qty" id="qty-${pc}" onchange="updateFishQty(${pc}); calculateTotal()">
         <option value="">-- เลือกขนาดก่อน --</option>
       </select>
       <div id="unitwrap-${pc}" style="display:none;">
         <label>จำนวนที่ต้องการ (ใบ/ชิ้น) - นำไปคูณราคาต่อชิ้น</label>
         <input type="number" class="p-unitqty" min="1" placeholder="เช่น 25" oninput="calculateTotal()">
+      </div>
+      <div id="fish-${pc}" class="fish-box" style="display:none;">
+        <label>ไข่ปลา ✳️</label>
+        <select class="p-fish-choice" id="fishchoice-${pc}" onchange="updateFishQty(${pc}); calculateTotal()">
+          <option value="">-- เลือก --</option>
+          <option value="ไม่รับไข่ปลา">ไม่รับไข่ปลา</option>
+          <option value="รับไข่ปลา">รับไข่ปลา</option>
+        </select>
+        <div id="fishqtywrap-${pc}" style="display:none;">
+          <label>จำนวนไข่ปลา (ต้องเท่ากับจำนวนอะคริลิคที่สั่ง)</label>
+          <select class="p-fish-qty" id="fishqty-${pc}" onchange="updateFishImg(${pc}); calculateTotal()">
+            <option value="">-- เลือกจำนวนไข่ปลา --</option>
+          </select>
+        </div>
+        <div id="fishcolorwrap-${pc}" style="display:none;">
+          <label>สีไข่ปลา ✳️</label>
+          <select class="p-fish-color" id="fishcolor-${pc}" onchange="updateFishImg(${pc}); calculateTotal()">
+            <option value="">-- เลือกสีไข่ปลา --</option>
+            ${FISH_COLORS.map(c => `<option value="${c.name}">${c.name}</option>`).join('')}
+          </select>
+          <div id="fishimgwrap-${pc}" style="display:none; text-align:center; margin-bottom:10px;">
+            <a id="fishimglink-${pc}" href="#" target="_blank" rel="noopener">
+              <img id="fishimg-${pc}" src="" alt="ภาพสีไข่ปลา" style="width:100%; max-width:300px; border-radius:8px; border:1px solid #f1dbf0;">
+            </a>
+          </div>
+        </div>
       </div>
       <div id="extra-${pc}" class="extra-info-box" style="display:none;">
         <span class="extra-label">📋 กรุณาระบุข้อมูลเพิ่มเติม</span>
@@ -226,13 +559,85 @@ function addProduct(){
         <label id="extra-lbl-${pc}"></label>
         <input type="text" class="p-extra" id="extra-input-${pc}" placeholder="">
       </div>
-      <label>หมายเหตุเพิ่มเติม</label>
-      <input type="number" class="p-plus" id="plus-${pc}" min="0" placeholder="❗️กรณีลูกค้าคุยกับทางร้านเพิ่มเติมทางไลน์❗️" oninput="calculateTotal()">
+      <div id="part-${pc}" style="display:none;">
+        <label>อะไหล่พิเศษ (สำหรับพวงกุญแจ) - ชิ้นละ 2 บาท [ไม่บังคับ]</label>
+        <input type="number" class="p-plus" id="plus-${pc}" min="0" placeholder="❗️เฉพาะ สั่งห้อยคู่ไม่ต้องกรอก❗️" oninput="calculateTotal()">
+      </div>
     </div>`;
   container.insertAdjacentHTML('beforeend', itemHtml);
+  // ตั้งรายการแรกของกลุ่มให้อัตโนมัติ
+  if(PAGE && PAGE.preset && items.length === 0){
+    const el = document.getElementById(`product-${pc}`);
+    el.querySelector('.p-type').value = PAGE.preset;
+    updateSizes(pc);
+    updateExtraInfo(pc);
+    calculateTotal();
+  }
 }
 
 function removeProduct(pc){ const it=document.getElementById(`product-${pc}`); if(it) it.remove(); calculateTotal(); }
+
+// ── ไข่ปลา ──
+function updateFishQty(pc){
+  const item = document.getElementById(`product-${pc}`);
+  if(!item) return;
+  const type = item.querySelector('.p-type').value;
+  const choice = document.getElementById(`fishchoice-${pc}`).value;
+  const acrylicQty = item.querySelector('.p-qty').value;
+  const qtyWrap = document.getElementById(`fishqtywrap-${pc}`);
+  const colorWrap = document.getElementById(`fishcolorwrap-${pc}`);
+  const fishQty = document.getElementById(`fishqty-${pc}`);
+  const colorSel = document.getElementById(`fishcolor-${pc}`);
+  if(type !== FISH_ITEM){
+    qtyWrap.style.display = 'none';
+    colorWrap.style.display = 'none';
+    updateFishImg(pc);
+    return;
+  }
+  if(choice === 'รับไข่ปลา'){
+    qtyWrap.style.display = 'block';
+    colorWrap.style.display = 'block';
+    fishQty.innerHTML = acrylicQty
+      ? `<option value="${acrylicQty}" selected>${acrylicQty}</option>`
+      : '<option value="">-- เลือกจำนวนอะคริลิคก่อน --</option>';
+  } else {
+    qtyWrap.style.display = 'none';
+    colorWrap.style.display = 'none';
+    fishQty.innerHTML = '<option value="">-- เลือกจำนวนไข่ปลา --</option>';
+    colorSel.value = '';
+  }
+  updateFishImg(pc);
+}
+
+function updateFishImg(pc){
+  const colorSel = document.getElementById(`fishcolor-${pc}`);
+  if(!colorSel) return;
+  const found = FISH_COLORS.find(c => c.name === colorSel.value);
+  const wrap = document.getElementById(`fishimgwrap-${pc}`);
+  const img = document.getElementById(`fishimg-${pc}`);
+  if(found && found.imgUrl){
+    img.src = found.imgUrl;
+    document.getElementById(`fishimglink-${pc}`).href = found.imgUrl;
+    wrap.style.display = 'block';
+  } else {
+    img.src = '';
+    wrap.style.display = 'none';
+  }
+}
+
+function fishValid(item){
+  const type = item.querySelector('.p-type').value;
+  if(type !== FISH_ITEM) return true;
+  const choice = item.querySelector('.p-fish-choice').value;
+  if(!choice) return false;
+  if(choice === 'รับไข่ปลา'){
+    const fq = item.querySelector('.p-fish-qty').value;
+    const aq = item.querySelector('.p-qty').value;
+    const color = item.querySelector('.p-fish-color').value;
+    return !!fq && fq === aq && !!color;
+  }
+  return true;
+}
 
 function updateExtraInfo(pc){
   const type      = document.querySelector(`#product-${pc} .p-type`).value;
@@ -242,6 +647,13 @@ function updateExtraInfo(pc){
   const extraNote = document.getElementById(`extra-note-${pc}`);
   const extraLbl  = document.getElementById(`extra-lbl-${pc}`);
   const extraInp  = document.getElementById(`extra-input-${pc}`);
+  const fishBox = document.getElementById(`fish-${pc}`);
+  fishBox.style.display = (type === FISH_ITEM) ? 'block' : 'none';
+  if(type !== FISH_ITEM){ document.getElementById(`fishchoice-${pc}`).value = ''; }
+  updateFishQty(pc);
+  const partBox = document.getElementById(`part-${pc}`);
+  partBox.style.display = isPartItem(type) ? 'block' : 'none';
+  if(!isPartItem(type)){ document.getElementById(`plus-${pc}`).value = ''; }
   if(EXTRA_INFO[type]){
     const info = EXTRA_INFO[type];
     extraImg.src          = info.imgUrl;
@@ -262,19 +674,37 @@ function updateSizes(pc){
   const type = document.querySelector(`#product-${pc} .p-type`).value;
   const sizeSelect = document.getElementById(`size-${pc}`);
   const qtySelect  = document.getElementById(`qty-${pc}`);
+  const qtyLabel   = document.getElementById(`qtylabel-${pc}`);
   const sizes = getSizeOptions(type);
   sizeSelect.innerHTML = sizes.length>0 ? `<option value="">-- เลือกขนาด --</option>${sizes.map(s=>`<option value="${s}">${s}</option>`).join('')}` : '<option value="">-- ไม่มีข้อมูล --</option>';
   qtySelect.innerHTML = '<option value="">-- เลือกขนาดก่อน --</option>';
+  qtyLabel.style.display = 'block';
+  qtySelect.style.display = 'block';
   document.getElementById(`unitwrap-${pc}`).style.display = 'none';
   calculateTotal();
 }
 
 function updateQtys(pc){
-  const type     = document.querySelector(`#product-${pc} .p-type`).value;
-  const size     = document.getElementById(`size-${pc}`).value;
+  const type      = document.querySelector(`#product-${pc} .p-type`).value;
+  const size      = document.getElementById(`size-${pc}`).value;
   const qtySelect = document.getElementById(`qty-${pc}`);
   const qtyLabel  = document.getElementById(`qtylabel-${pc}`);
   const unitWrap  = document.getElementById(`unitwrap-${pc}`);
+  const unitLabel = unitWrap.querySelector('label');
+
+  if(isFreeQty(type)){
+    qtyLabel.style.display = 'none';
+    qtySelect.style.display = 'none';
+    qtySelect.innerHTML = size ? `<option value="${FREE_QTY_LABEL}" selected>${FREE_QTY_LABEL}</option>` : '<option value="">-- เลือกขนาดก่อน --</option>';
+    unitLabel.textContent = 'จำนวนที่ต้องการ (ชิ้น) - ขั้นต่ำ 200 ชิ้น';
+    unitWrap.style.display = 'block';
+    calculateTotal();
+    return;
+  }
+
+  qtyLabel.style.display = 'block';
+  qtySelect.style.display = 'block';
+  unitLabel.textContent = 'จำนวนที่ต้องการ (ใบ/ชิ้น) - นำไปคูณราคาต่อชิ้น';
   const qtys = getQtyOptions(type,size);
   if(isPerPiece(type)){ qtyLabel.textContent='เรตราคา (ต่อชิ้น/ใบ)'; unitWrap.style.display='block'; }
   else { qtyLabel.textContent='จำนวน'; unitWrap.style.display='none'; }
@@ -286,11 +716,16 @@ function calculateTotal(){
   let grandTotal = 0;
   document.querySelectorAll('.product-item').forEach(item=>{
     const type=item.querySelector('.p-type').value, size=item.querySelector('.p-size').value, qty=item.querySelector('.p-qty').value;
-    const plus=parseInt(item.querySelector('.p-plus').value)||0;
+    const partFee=getPartFee(item);
     const unitEl=item.querySelector('.p-unitqty'), unitQty=parseInt(unitEl?unitEl.value:0)||0;
-    if(type&&size&&qty){ const unitPrice=getPrice(type,size,qty); const price=isPerPiece(type)?unitPrice*unitQty:unitPrice; grandTotal+=price+(plus*2); item.classList.remove('error'); }
+    if(type&&size&&qty){
+      const unitPrice=getPrice(type,size,qty);
+      const price=isPerPiece(type)?unitPrice*unitQty:unitPrice;
+      const fishFee=getFishFee(item);
+      grandTotal+=price+partFee+fishFee; item.classList.remove('error');
+    }
     else if(type||size||qty){ item.classList.add('error'); }
-    else if(plus>0){ grandTotal+=plus*2; item.classList.remove('error'); }
+    else if(partFee>0){ grandTotal+=partFee; item.classList.remove('error'); }
   });
   document.getElementById('total-amount').textContent=grandTotal.toLocaleString('th-TH');
 }
@@ -312,16 +747,19 @@ function sendOrder(){
   if(!pay_amount||!pay_date||!pay_time){ alert('กรุณากรอกข้อมูลการโอน (ยอดโอน, วันที่, เวลา)'); return; }
   items.forEach(item=>{
     const type=item.querySelector('.p-type').value, size=item.querySelector('.p-size').value, qty=item.querySelector('.p-qty').value;
-    const unitEl=item.querySelector('.p-unitqty');
+    const unitEl=item.querySelector('.p-unitqty'), unitQty=parseInt(unitEl?unitEl.value:0)||0;
     const extraBox=item.querySelector('.extra-info-box'), extraInp=item.querySelector('.p-extra');
     const extraVisible=extraBox&&extraBox.style.display!=='none';
-    if(!type||!size||!qty){ itemsValid=false; item.classList.add('error'); }
-    if(isPerPiece(type)&&(!unitEl||!parseInt(unitEl.value))){ itemsValid=false; item.classList.add('error'); }
+    let ok = !!(type && size && qty);
+    if(isFreeQty(type)) ok = ok && unitQty >= 200;
+    else if(isPerPiece(type)) ok = ok && unitQty > 0;
+    if(!fishValid(item)) ok = false;
     if(extraVisible&&extraInp&&EXTRA_INFO[type]&&EXTRA_INFO[type].required&&!extraInp.value.trim()){
-      itemsValid=false; item.classList.add('error'); extraInp.style.borderColor='#d63384';
+      ok = false; extraInp.style.borderColor='#d63384';
     } else if(extraInp){ extraInp.style.borderColor=''; }
+    if(!ok){ itemsValid=false; item.classList.add('error'); }
   });
-  if(!itemsValid){ alert('กรุณากรอกรายละเอียดให้ครบ รวมถึงจำนวนที่ต้องการ (สินค้าคิดต่อชิ้น) และข้อมูลสี/เบอร์อะไหล่ของสินค้าที่มีเครื่องหมาย ✳️'); return; }
+  if(!itemsValid){ alert('กรุณากรอกรายละเอียดให้ครบ รวมถึงจำนวนที่ต้องการ (สินค้าสั่ง 200 ชิ้นขึ้นไปต้องไม่ต่ำกว่า 200) และข้อมูลสี/เบอร์อะไหล่ของสินค้าที่มีเครื่องหมาย ✳️'); return; }
 
   btn.disabled=true; btn.textContent='กำลังส่ง...';
 
@@ -332,27 +770,30 @@ function sendOrder(){
     const type=item.querySelector('.p-type').value, size=item.querySelector('.p-size').value, qty=item.querySelector('.p-qty').value;
     const plus=parseInt(item.querySelector('.p-plus').value)||0;
     const unitEl=item.querySelector('.p-unitqty'), unitQty=parseInt(unitEl?unitEl.value:0)||0;
-    const extraInp=item.querySelector('.p-extra'), extraVal=extraInp?extraInp.value.trim():'';
-    const unitPrice=getPrice(type,size,qty), price=isPerPiece(type)?unitPrice*unitQty:unitPrice, plusPrice=plus*2;
+    const extraInp=item.querySelector('.p-extra');
+    const fishChoice=item.querySelector('.p-fish-choice')?item.querySelector('.p-fish-choice').value:'';
+    const fishQtyVal=item.querySelector('.p-fish-qty')?item.querySelector('.p-fish-qty').value:'';
+    const fishColorVal=item.querySelector('.p-fish-color')?item.querySelector('.p-fish-color').value:'';
+    const fishInfo=fishChoice==='รับไข่ปลา' ? `รับไข่ปลา ${fishQtyVal} ชิ้น (${fishColorVal})` : (fishChoice||'');
+    const extraVal=[fishInfo, extraInp?extraInp.value.trim():''].filter(Boolean).join(' | ');
+    const unitPrice=getPrice(type,size,qty), price=isPerPiece(type)?unitPrice*unitQty:unitPrice;
+    const partFee=getPartFee(item);
+    const fishFee=getFishFee(item);
     const qtyText=isPerPiece(type)?(unitQty+' ชิ้น (เรต '+qty+')'):qty;
     data.append(`product_${index}_type`,type); data.append(`product_${index}_size`,size); data.append(`product_${index}_qty`,qtyText);
-    data.append(`product_${index}_price`,price); data.append(`product_${index}_plus`,plus); data.append(`product_${index}_plus_price`,plusPrice);
-    data.append(`product_${index}_total`,price+plusPrice);
+    data.append(`product_${index}_price`,price); data.append(`product_${index}_plus`,plus); data.append(`product_${index}_plus_price`,partFee);
+    data.append(`product_${index}_total`,price+partFee+fishFee);
     if(extraVal) data.append(`product_${index}_extra`,extraVal);
   });
 
-  // ── ส่งข้อมูลไป Google Sheet ──
-  fetch('https://script.google.com/macros/s/AKfycbzHY4r6_hZu-E5w9yR8QMVQ_2ShuAcAlk5uRsENZKCvd7x8c86INxchIed1YooUJmTGsA/exec',{method:'POST',mode:'no-cors',body:data,keepalive:true})
+  // ── ส่งข้อมูลไป Google Sheet (URL เดียวกันทุกหน้า) ──
+  fetch('https://script.google.com/macros/s/AKfycbw_VYMBk42MGOE5IOOg_Wg2DEJCpXIkBINCmCFgSQdOiXZFS-a0YcCCLBT9ydAzUmHP/exec',{method:'POST',mode:'no-cors',body:data,keepalive:true})
     .catch(err=>console.error('Error:',err))
     .finally(()=>{
-      // ── เคลียร์ฟอร์ม ──
       document.getElementById('twitter').value=''; document.getElementById('line').value=''; document.getElementById('drive_link').value='';
       document.getElementById('pay_amount').value=''; document.getElementById('pay_date').value=''; document.getElementById('pay_time').value='';
       document.getElementById('product-list').innerHTML=''; productCount=0; addProduct(); calculateTotal();
-
-      // ── โชว์หน้าจอส่งสำเร็จในเว็บ (ไม่ใช้ alert/window.open ที่โดนบล็อกง่าย) ──
       showSuccessOverlay();
-
       btn.disabled=false; btn.textContent='กดส่งข้อมูลผลิต';
     });
 }
