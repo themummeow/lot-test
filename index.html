@@ -55,7 +55,7 @@ input:focus, select:focus { outline:none; border-color:#76615b; }
 .step-progress { margin-bottom:15px; }
 .step-label { font-size:0.85rem; color:#76615b; font-weight:600; margin-bottom:6px; }
 .step-bar { height:8px; background:#f1dbf0; border-radius:8px; overflow:hidden; }
-.step-bar-fill { height:100%; background:#d63384; width:0; transition:width 0.3s; }
+.step-bar-fill { height:100%; background:#76615b; width:0; transition:width 0.3s; }
 .step-nav { display:flex; gap:10px; margin-top:10px; }
 .step-nav button { flex:1; padding:14px; border-radius:25px; border:none; font-weight:600; cursor:pointer; font-size:1rem; }
 .btn-back { background:#f1dbf0; color:#76615b; }
@@ -377,8 +377,10 @@ const GROUPS = {
 
 function resolvePage(){
   const p = new URLSearchParams(window.location.search).get('type');
-  if(!p || !GROUPS[p]) return null;
-  return { title: GROUPS[p].title, allowed: GROUPS[p].items, preset: GROUPS[p].items[0] };
+  // ไม่มี ?type= ให้ใช้กลุ่ม acrylic เป็นค่าเริ่มต้น
+  const key = (p === null) ? 'acrylic' : p;
+  if(!GROUPS[key]) return null;
+  return { title: GROUPS[key].title, allowed: GROUPS[key].items, preset: GROUPS[key].items[0] };
 }
 const PAGE = resolvePage();
 const PRICE_DB = {};
